@@ -1,0 +1,23 @@
+{
+  "name": "MonsterZoo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarijnOomensAvans/MonsterZoo.git"
+  },
+  "keywords": [],
+  "author": "Marijn Oomnes en Thijs Reichenbach",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarijnOomensAvans/MonsterZoo/issues"
+  },
+  "homepage": "https://github.com/MarijnOomensAvans/MonsterZoo#readme",
+  "dependencies": {
+    "nes.css": "^2.1.1"
+  }
+}
