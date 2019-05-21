@@ -2,3 +2,46 @@
     font-size: 100%;
     font-family: 'Press Start 2P', cursive;
    }
+
+body {
+    margin: 0;
+}
+
+ .holy-grail {
+	min-height: 100vh;
+}
+
+.holy-grail header {
+    background-color: #a8a8a8;
+    height: 6rem;
+}
+
+.holy-grail,
+.holy-grail-body {
+	display: flex;
+	flex: 1 1 auto;
+    flex-direction: column;
+    text-align: center;
+}
+
+.holy-grail-content {
+    flex: 1 1 auto;
+    background-color: #a8a8a8;
+}
+
+.holy-grail-sidebar-1 {
+    order: -1;
+}
+
+.holy-grail-sidebar-2 {
+}
+
+@media (min-width: 768px) {
+	.holy-grail-body {
+		flex-direction: row;
+	}
+
+	.hg-sidebar {
+		flex: 0 0 20%;
+	}
+}
