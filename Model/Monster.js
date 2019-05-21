@@ -8,21 +8,11 @@ class Monster{
 class MosterService {
     getmonsters() {
         return [
-            
+            new Monster({type: 'fire', name: 'Marijn', arms: 2, type_arms: 'tentakels', legs: 2, eyes: 4, skintype: 'schubben', fly: 'nee', swim: 'nee', color: 'oranje', map: 0, xcoördinaat: 1, ycoördinaat: 1}),
+            new Monster({type: 'fire', name: 'Thijs', arms: 6, type_arms: 'klauw-vleugels', legs: 0, eyes: 3, skintype: 'veren', fly: 'ja', swim: 'nee', color: 'bruin', map: 0, xcoördinaat: 2, ycoördinaat: 2})
         ]
     }
     saveMonsters(monster){
         console.log(monster);
     }
 }
-
-class MonsterCreate{
-    createMonster(element,name,arms,type_arms,legs,eyes,skintype,fly,swim,color, map, xcoördinaat, ycoördinaat){
-        return [
-            new Monster({type: element, name: name, arms: arms, type_arms: type_arms, legs: legs, eyes: eyes, skintype: skintype, fly: fly, swim: swim, color: color, map: map, xcoördinaat: xcoördinaat, ycoördinaat: ycoördinaat})
-        ]
-    }
-    
-    
-}
-    
