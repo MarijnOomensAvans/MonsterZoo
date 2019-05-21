@@ -12,7 +12,6 @@ body {
 }
 
 .holy-grail header {
-    background-color: #a8a8a8;
     height: 6rem;
 }
 
@@ -45,3 +44,8 @@ body {
 		flex: 0 0 20%;
 	}
 }
+
+/* Overwrite external style (NES-css) */
+.nes-btn.is-success {
+    color: #212529;
+  }
