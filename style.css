@@ -7,7 +7,7 @@ body {
     margin: 0;
 }
 
- .holy-grail {
+.holy-grail {
 	min-height: 100vh;
 }
 
@@ -19,7 +19,7 @@ body {
 .holy-grail-body {
 	display: flex;
 	flex: 1 1 auto;
-    flex-direction: column;
+    flex-direction: row;
     text-align: center;
 }
 
@@ -28,21 +28,15 @@ body {
     background-color: #a8a8a8;
 }
 
+.hg-sidebar {
+    flex: 0 0 20%;
+}
+
 .holy-grail-sidebar-1 {
     order: -1;
 }
 
 .holy-grail-sidebar-2 {
-}
-
-@media (min-width: 768px) {
-	.holy-grail-body {
-		flex-direction: row;
-	}
-
-	.hg-sidebar {
-		flex: 0 0 20%;
-	}
 }
 
 /* Overwrite external style (NES-css) */
