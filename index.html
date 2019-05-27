@@ -9,6 +9,7 @@
         <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"> 
         <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="style.css">
+        <script src="View/MapView.js" defer></script>
     </head>
     <body class="holy-grail">
             <header class="nes-container is-rounded is-dark">
@@ -20,7 +21,9 @@
             <div class="holy-grail-body">
         
                 <section class="holy-grail-content">
-                    <div class="map"></div>
+                    <div class="map">
+                        <canvas id="canvas" width="820" height="820"></canvas>
+                    </div>
                 </section>
         
                 <div class="holy-grail-sidebar-1 hg-sidebar is-dark nes-container with-title is-centered">
