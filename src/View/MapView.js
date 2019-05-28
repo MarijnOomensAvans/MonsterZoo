@@ -1,14 +1,16 @@
 export default class MapView {
-    // Box width
-    bw = 800;
-    // Box height
-    bh = 800;
-    // Padding
-    p = 10;
 
-    canvas = document.getElementById("canvas");
-    context = canvas.getContext("2d");
     drawBoard() {
+        // Box width
+        let bw = 800;
+        // Box height
+        let bh = 800;
+        // Padding
+        let p = 10;
+
+        let canvas = document.getElementById("canvas");
+        let context = canvas.getContext("2d");
+
         for (var x = 0; x <= bw; x += 80) {
             context.moveTo(0.5 + x + p, p);
             context.lineTo(0.5 + x + p, bh + p);
