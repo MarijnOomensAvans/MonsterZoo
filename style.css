@@ -35,6 +35,23 @@ body {
 .holy-grail-sidebar-2 {
 }
 
+#map {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#grid {
+    border-collapse: collapse;
+    width: 80%;
+    height: 90%;
+}
+
+#grid td {
+    border: 3px solid black;
+}
+
 @media (min-width: 768px) {
 	.holy-grail-body {
 		flex-direction: row;
