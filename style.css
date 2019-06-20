@@ -32,9 +32,6 @@ body {
     order: -1;
 }
 
-.holy-grail-sidebar-2 {
-}
-
 #map {
     height: 100%;
     display: flex;
@@ -85,10 +82,10 @@ body {
     color: #212529;
 }
 
-.align-form {
-    text-align: left;
-}
-
 .hidden {
     display: none;
+}
+
+.align-left{
+    text-align: left;
 }
