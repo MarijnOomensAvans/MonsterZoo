@@ -35,6 +35,11 @@ body {
 .holy-grail-sidebar-2 {
 }
 
+.align_form{
+    text-align: left;
+}
+
+
 @media (min-width: 768px) {
 	.holy-grail-body {
 		flex-direction: row;
@@ -45,7 +50,16 @@ body {
 	}
 }
 
+.hidden{
+    display: none;
+}
+
+
 /* Overwrite external style (NES-css) */
 .nes-btn.is-success {
     color: #212529;
-  }
+}
+
+.nes-btn.is-error {
+    color: #212529;
+}

@@ -8,8 +8,8 @@ class Monster{
 class MosterService {
     getmonsters() {
         return [
-            new Monster({type: 'fire', name: 'Marijn', arms: 2, type_arms: 'tentakels', legs: 2, eyes: 4, skintype: 'schubben', fly: 'nee', swim: 'nee', color: 'oranje', map: 0, xcoördinaat: 1, ycoördinaat: 1}),
-            new Monster({type: 'fire', name: 'Thijs', arms: 6, type_arms: 'klauw-vleugels', legs: 0, eyes: 3, skintype: 'veren', fly: 'ja', swim: 'nee', color: 'bruin', map: 0, xcoördinaat: 2, ycoördinaat: 2})
+            new Monster({name: 'Marijn', element: 'fire', arms: 2, type_arms: 'tentacles', legs: 2, eyes: 4, furtype: 'scales', fly: 'no', swim: 'no', color: 'orange', map: 0, xcoördinaat: 1, ycoördinaat: 1}),
+            new Monster({name: 'Thijs', element: 'fire',  arms: 6, type_arms: 'claw-wings', legs: 0, eyes: 3, furtype: 'feathers', fly: 'yes', swim: 'no', color: 'brown', map: 0, xcoördinaat: 2, ycoördinaat: 2})
         ]
     }
     saveMonsters(monster){
