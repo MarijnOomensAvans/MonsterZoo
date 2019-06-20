@@ -8,7 +8,7 @@ export default class ZooController
     constructor(){
         this.monsterservice = new MonsterService();
         this.createmonsterview =  new CreateMonsterView(this);
-        this.mapview = new MapView(this);
+        this.mapview = new MapView();
         this.mapview.drawBoard();
     }
 

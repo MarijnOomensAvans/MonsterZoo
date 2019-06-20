@@ -1,12 +1,12 @@
-class CreateMonsterView {
+export class CreateMonsterView {
 
-    template;
-    monsterform;
-    radio_fire;
-    radio_water;
-    radio_earth;
-    radio_wind;
-    switch_int;
+    // template;
+    // monsterform;
+    // radio_fire;
+    // radio_water;
+    // radio_earth;
+    // radio_wind;
+    // switch_int;
 
 
     constructor(controller) {

@@ -1,4 +1,4 @@
-export default class MapView {
+export class MapView {
   constructor() {
     this.map = document.getElementById("map");
     this.zw = 10;
