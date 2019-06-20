@@ -1,5 +1,3 @@
-import MapView  from './View/MapView';
+import ZooController from './Controller/ZooController';
 
-let map = new MapView();
-
-map.drawBoard();
+let zoocontroller = new ZooController();
