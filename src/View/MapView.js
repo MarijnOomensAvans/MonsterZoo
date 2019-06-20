@@ -1,15 +1,22 @@
 export default class MapView {
   constructor() {
-    fetch("http://localhost:8125/src/data/grid")
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(myJson) {
-        console.log(JSON.stringify(myJson));
-      });
     this.map = document.getElementById("map");
     this.zw = 10;
     this.zh = 10;
+
+    console.log(this.readJson());
+  }
+
+  readJson() {
+    fetch('/data/grid.json')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(myJson) {
+      let jsonstring = JSON.stringify(myJson);
+      console.log(jsonstring);
+      alert(JSON.parse(jsonstring).name);
+    });
   }
 
   drawBoard() {

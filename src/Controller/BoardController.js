@@ -1,0 +1,1 @@
+import { MonsterService } from '../model/MonsterService'
