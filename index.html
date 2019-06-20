@@ -7,7 +7,7 @@
     <title>MonsterZoo</title>
     <meta name="description" content="An interactive monster farm made with HTML5, CSS3 and ES6">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
     <script src="Controller/CreateMonsterView.js" defer></script>
@@ -64,10 +64,8 @@
                                 </select>
                             </fieldset>
                             <fieldset>
-                                if(arms <=2){ <label>Legs: 2</label>
-                                    }else{
-                                    <label>Legs: 0</label>
-                                    }
+                                <label>Legs: 2</label>
+                                <label>Legs: 0</label>
                             </fieldset>
                             <fieldset>
                                 <label>Eyes:</label>
@@ -80,24 +78,21 @@
                             </fieldset>
                             <fieldset>
                                 <label>Furtype:</label>
-                                <select id=furtype">
+                                <select id="furtype">
                                     <option value="Scales">Scales</option>
                                     <option value="Feathers">Feathers</option>
                                 </select>
                             </fieldset>
                             <fieldset>
-                                if(furtype = Feathers){ <label>Can fly: yes</label>
-                                }else{
+                                <label>Can fly: yes</label>
                                 <label>Can fly: no</label>
-                                }
                             </fieldset>
                             <fieldset>
                                 <label>Can swim: no</label>
-                                <input type="hidden" value="no" name="swim">
                             </fieldset>
                             <fieldset>
                                 <label>Color:</label>
-                                <select id=color">
+                                <select id="color">
                                     <option value="Red">Red</option>
                                     <option value="Orange">Orange</option>
                                     <option value="Brown">Brown</option>
@@ -128,10 +123,10 @@
                                 </select>
                             </fieldset>
                             <fieldset>
-                                if(arms <=4){ <label>Legs: max 4</label>
-                                    }else{
-                                    <label>Legs: 0</label>
-                                    }
+                                <label>Legs: max 4</label>
+
+                                <label>Legs: 0</label>
+
                             </fieldset>
                             <fieldset>
                                 <label>Eyes:</label>
@@ -169,6 +164,7 @@
                             </fieldset>
                         </fieldset>
                     </div>
+
                     <div id="earth_template" class="hidden">
                         <fieldset>
                             <fieldset>
@@ -246,10 +242,8 @@
                                 <label>Can fly: yes</label>
                             </fieldset>
                             <fieldset>
-                                if(furtype = Feathers){ <label>Can swim: no</label>
-                                }else{
+                                <label>Can swim: no</label>
                                 <label>Can swim: yes</label>
-                                }
                             </fieldset>
                             <fieldset>
                                 <label>Color:</label>
