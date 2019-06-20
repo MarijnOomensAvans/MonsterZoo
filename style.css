@@ -84,3 +84,11 @@ body {
 .nes-btn.is-error {
     color: #212529;
 }
+
+.align-form {
+    text-align: left;
+}
+
+.hidden {
+    display: none;
+}
