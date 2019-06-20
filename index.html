@@ -7,7 +7,7 @@
     <title>MonsterZoo</title>
     <meta name="description" content="An interactive monster farm made with HTML5, CSS3 and ES6">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"> 
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
     <script src="Controller/CreateMonsterView.js" defer></script>
@@ -37,30 +37,30 @@
                     </fieldset>
                     <fieldset>
                         <label>Element:</label>
-                        <input id="element_fire" name="element" type="checkbox"><label>Fire</label>
-                        <input id="element_water" name="element" type="checkbox"><label>water</label>
-                        <input id="element_earth" name="element" type="checkbox"><label>Earth</label>
-                        <input id="element_wind" name="element" type="checkbox"><label>Wind</label>
+                        <input id="element_fire" name="element" type="radio" value="1"><label>Fire</label>
+                        <input id="element_water" name="element" type="radio" value="2"><label>water</label>
+                        <input id="element_earth" name="element" type="radio" value="3"><label>Earth</label>
+                        <input id="element_wind" name="element" type="radio" value="4"><label>Wind</label>
                     </fieldset>
                     <div id="fire_template" class="hidden">
                         <fieldset>
                             <fieldset>
                                 <label>Arms:</label>
                                 <select id="arms">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
                                 </select>
                             </fieldset>
                             <fieldset>
                                 <label>Type arms:</label>
                                 <select id="type_arms">
-                                    <option>Tentacles</option>
-                                    <option>Claws</option>
-                                    <option>Claw-wings</option>
+                                    <option value="Tentacles">Tentacles</option>
+                                    <option value="Claws">Claws</option>
+                                    <option value="Claw-wings">Claw-wings</option>
                                 </select>
                             </fieldset>
                             <fieldset>
@@ -72,17 +72,17 @@
                             <fieldset>
                                 <label>Eyes:</label>
                                 <select id="eyes">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
                                 </select>
                             </fieldset>
                             <fieldset>
                                 <label>Furtype:</label>
                                 <select id=furtype">
-                                    <option>Scales</option>
-                                    <option>Feathers</option>
+                                    <option value="Scales">Scales</option>
+                                    <option value="Feathers">Feathers</option>
                                 </select>
                             </fieldset>
                             <fieldset>
@@ -93,13 +93,14 @@
                             </fieldset>
                             <fieldset>
                                 <label>Can swim: no</label>
+                                <input type="hidden" value="no" name="swim">
                             </fieldset>
                             <fieldset>
                                 <label>Color:</label>
                                 <select id=color">
-                                    <option>Red</option>
-                                    <option>Orange</option>
-                                    <option>Brown</option>
+                                    <option value="Red">Red</option>
+                                    <option value="Orange">Orange</option>
+                                    <option value="Brown">Brown</option>
                                 </select>
                             </fieldset>
                         </fieldset>
