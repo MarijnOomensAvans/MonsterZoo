@@ -12,7 +12,7 @@ export class MapView {
         response.json().then(json => {
           this.grids = json;
           let jsonstring = JSON.stringify(this.grids)
-          console.log(JSON.parse(jsonstring).grid[0])
+          console.log(JSON.parse(jsonstring))
         })
       })
   }
