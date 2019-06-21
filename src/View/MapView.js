@@ -3,16 +3,15 @@ export class MapView {
     this.map = document.getElementById("map");
     this.zw = 10;
     this.zh = 10;
-    this.readJson();
   }
 
   readJson() {
     fetch("./map/grid.json")
       .then(response => {
         response.json().then(json => {
-          this.grids = json;
-          let jsonstring = JSON.stringify(this.grids)
-          console.log(JSON.parse(jsonstring))
+          let jsonstring = JSON.stringify(json)
+          this.grid = JSON.parse(jsonstring)[0].grid
+          this.drawBoard()
         })
       })
   }
@@ -25,12 +24,15 @@ export class MapView {
       this.tr = document.createElement("tr");
       for (let y = 0; y < this.zh; y++) {
         this.td = document.createElement("td");
-        this.td.setAttribute("ondrop", "drop(event)");
-        this.td.setAttribute("ondragover", "allowDrop(event)");
-        if (i == 5 && y == 5) {
+        this.td.addEventListener("dragover", this.dragover)
+        this.td.addEventListener("dragenter", this.dragenter)
+        this.td.addEventListener("drop", this.drop)
+
+        if (this.grid[i].Columns[y] == 1) {
           this.img = document.createElement("img");
+          this.img.setAttribute("class", "stone")
           this.img.src =
-            "https://evolutionmgt.com/wp-content/uploads/2017/05/e51196e2a1a965f4262dc4947729889f-game-cards-little-monsters.jpg";
+            "http://takfloyd.com/wp-content/uploads/2015/03/JunglerockAlpha.png";
           this.img.draggable = true;
           this.img.setAttribute("ondragstart", "drag(event)")
           this.td.appendChild(this.img);
@@ -50,18 +52,15 @@ export class MapView {
     }
   }
 
-  allowDrop(ev) {
-    ev.preventDefault();
+  dragover(e) {
+    e.preventDefault()
   }
-  
-  drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+  dragenter(e) {
+    e.preventDefault()
   }
-  
-  drop(ev) {
-    ev.preventDefault();
-    this.data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(this.data));
+  drop() {
+    let box = document.getElementsByClassName('stone')[0]
+    this.append(box)
   }
 
 }
