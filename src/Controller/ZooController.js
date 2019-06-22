@@ -13,6 +13,7 @@ export default class ZooController
     }
 
     addMonster(data){
-        this.monsterservice.saveMonster(new Monster(data));
+        var newMonster = new Monster(data);
+        this.monsterservice.saveMonster(newMonster);
     }
 }
