@@ -29,7 +29,6 @@
 
         <div class="holy-grail-sidebar-1 hg-sidebar is-dark nes-container with-title is-centered">
             <p class="title">Create monster</p>
-
             <div id="create_monster">
                 <form id="monster_form" class="align-left">
                     <fieldset>
@@ -39,7 +38,7 @@
                     <fieldset>
                         <label>Element:</label>
                         <input id="element_fire" name="element" type="radio" value="1"><label>Fire</label>
-                        <input id="element_water" name="element" type="radio" value="2"><label>water</label>
+                        <input id="element_water" name="element" type="radio" value="2"><label>Water</label>
                         <input id="element_earth" name="element" type="radio" value="3"><label>Earth</label>
                         <input id="element_wind" name="element" type="radio" value="4"><label>Wind</label>
                     </fieldset>
@@ -47,7 +46,7 @@
                         <fieldset>
                             <fieldset>
                                 <label>Arms:</label>
-                                <select id="arms">
+                                <select id="fire_arms" onchange="firearms()">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -65,8 +64,7 @@
                                 </select>
                             </fieldset>
                             <fieldset>
-                                <label>Legs: 2</label>
-                                <label>Legs: 0</label>
+                                <label id="fire_legs">Legs: 2</label>
                             </fieldset>
                             <fieldset>
                                 <label>Eyes:</label>
@@ -79,17 +77,17 @@
                             </fieldset>
                             <fieldset>
                                 <label>Furtype:</label>
-                                <select id="furtype">
+                                <select id="furtype" onchange="fireFeathers()">
                                     <option value="Scales">Scales</option>
                                     <option value="Feathers">Feathers</option>
                                 </select>
                             </fieldset>
                             <fieldset>
-                                <label>Can fly: yes</label>
-                                <label>Can fly: no</label>
+                                <label id="fireFly">Can fly: no</label>
                             </fieldset>
                             <fieldset>
                                 <label>Can swim: no</label>
+                                <input id="swim" value="false" class="hidden">
                             </fieldset>
                             <fieldset>
                                 <label>Color:</label>
@@ -105,7 +103,7 @@
                         <fieldset>
                             <fieldset>
                                 <label>Arms:</label>
-                                <select id="arms">
+                                <select id="water_arms" onchange="waterarms()">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -124,10 +122,13 @@
                                 </select>
                             </fieldset>
                             <fieldset>
-                                <label>Legs: max 4</label>
-
-                                <label>Legs: 0</label>
-
+                                <label id="water_legs">Legs: </label>
+                                <select id="options"  class="visibility">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
                             </fieldset>
                             <fieldset>
                                 <label>Eyes:</label>
@@ -233,18 +234,17 @@
                             </fieldset>
                             <fieldset>
                                 <label>Furtype:</label>
-                                <select id=furtype">
-                                    <option>Feathers</option>
-                                    <option>Hair</option>
-                                    <option>Scales</option>
+                                <select id="furwind" onchange="windswim()">
+                                    <option value="Feathers">Feathers</option>
+                                    <option value="Hair">Hair</option>
+                                    <option value="Scales">Scales</option>
                                 </select>
                             </fieldset>
                             <fieldset>
                                 <label>Can fly: yes</label>
                             </fieldset>
                             <fieldset>
-                                <label>Can swim: no</label>
-                                <label>Can swim: yes</label>
+                                <label id="windSwim">Can swim: no</label>
                             </fieldset>
                             <fieldset>
                                 <label>Color:</label>
@@ -264,9 +264,89 @@
 
         <div class="holy-grail-sidebar-2 hg-sidebar is-dark nes-container with-title is-centered">
             <p class="title">Information</p>
+            <img src="src\Image\sun.png" width="100" height="100">
+            <p>38° Celcius</p>
+            <div class="nes-container is-rounded is-dark with-title is-centered">
+                <p class="title">Weather reaction</p>
+                <table style="width:100%">
+                    <tr>
+                        <th></th>
+                        <th>Raining</th>
+                        <th>+30°</th>
+                        <th>-30°</th>
+                    </tr>
+                    <tr>
+                        <td>Fire</td>
+                        <td class="nes-text is-error">-10%</td>
+                        <td class="nes-text is-success">+10%</td>
+                        <td>0%</td>
+                    </tr>
+                    <tr>
+                        <td>Water</td>
+                        <td class="nes-text is-success">+10%</td>
+                        <td class="nes-text is-error">-10%</td>
+                        <td>0%</td>
+                    </tr>
+                    <tr>
+                        <td>Wind</td>
+                        <td class="nes-text is-error">-10%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                    </tr>
+                    <tr>
+                        <td>Earth</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                    </tr>
+            </div>
         </div>
-
     </div>
 </body>
+
+<script>
+    function firearms() {
+        var fire_int = document.getElementById("fire_arms").value;
+        if (fire_int <= 2) {
+            document.getElementById("fire_legs").innerHTML = "Legs: 2";
+        }
+        else {
+            document.getElementById("fire_legs").innerHTML = "Legs: 0";
+        }
+    }
+
+    function fireFeathers() {
+        var fire_fur = document.getElementById("furtype").value;
+        if (fire_fur == "Feathers") {
+            document.getElementById("fireFly").innerHTML = "Can fly: yes";
+        }
+        else {
+            document.getElementById("fireFly").innerHTML = "Can fly: no";
+        }
+    }
+
+    function waterarms() {
+        var water_int = document.getElementById("water_arms").value;
+        if (water_int <= 4) {
+            document.getElementById("water_legs").innerHTML = "Legs:";
+            document.getElementById("options").style.visibility = "visible";
+        }
+        else {
+            document.getElementById("water_legs").innerHTML = "Legs: 0";
+            document.getElementById("options").style.visibility = "hidden";
+        }
+    }
+
+    function windswim() {
+        var wind_fur = document.getElementById("furwind").value;
+        if (wind_fur == "Feathers") {
+            document.getElementById("windSwim").innerHTML = "Can swim: no";
+        }
+        else {
+            document.getElementById("windSwim").innerHTML = "Can swim: yes";
+        }
+    }
+
+</script>
 
 </html>

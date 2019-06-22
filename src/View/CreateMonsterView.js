@@ -17,6 +17,7 @@ export class CreateMonsterView {
         this.radio_water = document.getElementById('element_water');
         this.radio_earth = document.getElementById('element_earth');
         this.radio_wind = document.getElementById('element_wind');
+        this.fire_arms = document.getElementById('fire_arms');
 
         //events
         this.radio_fire.addEventListener('click', function () {
@@ -50,17 +51,6 @@ export class CreateMonsterView {
             document.getElementById("water_template").style.display = 'none';
             document.getElementById("earth_template").style.display = 'none';
         });
-
-        // if (this.arms.value <= 2) { <
-        //     label > Legs
-        // :
-        //     2 < /label>
-        // } else {
-        // <
-        //     label > Legs
-        // :
-        //     0 < /label>
-        // }
 
         this.monsterform.addEventListener('submit', function (e) {
             e.preventDefault();

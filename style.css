@@ -86,6 +86,10 @@ body {
     display: none;
 }
 
+.visibility {
+    visibility: visible;
+}
+
 .align-left{
     text-align: left;
 }
