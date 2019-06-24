@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -9,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
-    <script src="bundle.js" defer></script>
+    <script src="dist/bundle.js" defer></script>
 </head>
 
 <body class="holy-grail">
     <header class="nes-container is-rounded is-dark">
-        <button type="button" id="jungle" class="nes-btn is-success">Jungle</button>
-        <button type="button" id="desert" class="nes-btn is-warning">Desert</button>
-        <button type="button" id="northpole" class="nes-btn">Northpole</button>
+        <button type="button" class="nes-btn is-success">Jungle</button>
+        <button type="button" class="nes-btn is-warning">Desert</button>
+        <button type="button" class="nes-btn">Northpole</button>
     </header>
 
     <div class="holy-grail-body">
@@ -28,233 +29,263 @@
 
         <div class="holy-grail-sidebar-1 hg-sidebar is-dark nes-container with-title is-centered">
             <p class="title">Create monster</p>
-
-            <div id="create_monster">
+            <label>Element:</label><br>
+            <input id="element_fire" name="element" type="radio" value="1"><label>Fire</label>
+            <input id="element_water" name="element" type="radio" value="2"><label>Water</label><br>
+            <input id="element_earth" name="element" type="radio" value="3"><label>Earth</label>
+            <input id="element_wind" name="element" type="radio" value="4"><label>Wind</label>
+            <div id="fire_template" class="hidden">
                 <form id="monster_form" class="align-left">
                     <fieldset>
                         <label>Name:</label>
                         <input id="name" name="name">
                     </fieldset>
+                    <input id="element" value="fire" class="hidden">
                     <fieldset>
-                        <label>Element:</label>
-                        <input id="element_fire" name="element" type="radio" value="1"><label>Fire</label>
-                        <input id="element_water" name="element" type="radio" value="2"><label>water</label>
-                        <input id="element_earth" name="element" type="radio" value="3"><label>Earth</label>
-                        <input id="element_wind" name="element" type="radio" value="4"><label>Wind</label>
+                        <label>Arms:</label>
+                        <select id="arms" onchange="firearms()">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
                     </fieldset>
-                    <div id="fire_template" class="hidden">
-                        <fieldset>
-                            <fieldset>
-                                <label>Arms:</label>
-                                <select id="arms">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                </select>
-                            </fieldset>
-                            <fieldset>
-                                <label>Type arms:</label>
-                                <select id="type_arms">
-                                    <option value="Tentacles">Tentacles</option>
-                                    <option value="Claws">Claws</option>
-                                    <option value="Claw-wings">Claw-wings</option>
-                                </select>
-                            </fieldset>
-                            <fieldset>
-                                <label>Legs: 2</label>
-                                <label>Legs: 0</label>
-                            </fieldset>
-                            <fieldset>
-                                <label>Eyes:</label>
-                                <select id="eyes">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                            </fieldset>
-                            <fieldset>
-                                <label>Furtype:</label>
-                                <select id="furtype">
-                                    <option value="Scales">Scales</option>
-                                    <option value="Feathers">Feathers</option>
-                                </select>
-                            </fieldset>
-                            <fieldset>
-                                <label>Can fly: yes</label>
-                                <label>Can fly: no</label>
-                            </fieldset>
-                            <fieldset>
-                                <label>Can swim: no</label>
-                            </fieldset>
-                            <fieldset>
-                                <label>Color:</label>
-                                <select id="color">
-                                    <option value="Red">Red</option>
-                                    <option value="Orange">Orange</option>
-                                    <option value="Brown">Brown</option>
-                                </select>
-                            </fieldset>
-                        </fieldset>
-                    </div>
-                    <div id="water_template" class="hidden">
-                        <fieldset>
-                            <fieldset>
-                                <label>Arms:</label>
-                                <select id="arms">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    <option>7</option>
-                                    <option>8</option>
-                                </select>
-                            </fieldset>
-                            <fieldset>
-                                <label>Type arms:</label>
-                                <select id="type_arms">
-                                    <option>Tentacles</option>
-                                    <option>Fins</option>
-                                </select>
-                            </fieldset>
-                            <fieldset>
-                                <label>Legs: max 4</label>
+                    <fieldset>
+                        <label>Type arms:</label>
+                        <select id="type_arms">
+                            <option value="Tentacles">Tentacles</option>
+                            <option value="Claws">Claws</option>
+                            <option value="Claw-wings">Claw-wings</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label>Legs: <label id="fire_legs">2</label></label>
+                        <input id="legs" value="fire_legs.value" class="hidden">
+                    </fieldset>
+                    <fieldset>
+                        <label>Eyes:</label>
+                        <select id="eyes">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label>Furtype:</label>
+                        <select id="furtype" onchange="fireFeathers()">
+                            <option value="Scales">Scales</option>
+                            <option value="Feathers">Feathers</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label>Can fly: <label id="fireFly">no</label></label>
+                        <input id="fly" value="fireFly.value" class="hidden">
+                    </fieldset>
+                    <fieldset>
+                        <label>Can swim: no</label>
+                        <input id="swim" value="false" class="hidden">
+                    </fieldset>
+                    <fieldset>
+                        <label>Color:</label>
+                        <select id="color">
+                            <option value="Red">Red</option>
+                            <option value="Orange">Orange</option>
+                            <option value="Brown">Brown</option>
+                        </select>
+                    </fieldset>
+                    <input type="reset" class="nes-btn is-error" value="Cancel">
+                    <input type="submit" class="nes-btn is-success" value="Save">
+                </form>
+            </div>
+            <div id="water_template" class="hidden">
+                <form id="monster_form" class="align-left">
+                    <fieldset>
+                        <label>Name:</label>
+                        <input id="name" name="name">
+                    </fieldset>
+                    <input id="element" value="water" class="hidden">
+                    <fieldset>
+                        <label>Arms:</label>
+                        <select id="arms" onchange="waterarms()">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label>Type arms:</label>
+                        <select id="type_arms">
+                            <option value="Tentacles">Tentacles</option>
+                            <option value="Fins">Fins</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label>Legs: <label id="water_legs">0</label></label>
+                        <select id="options" class="hidden">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label>Eyes:</label>
+                        <select id="eyes">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label>Furtype:</label>
+                        <select id=furtype">
+                            <option value="Scales">Scales</option>
+                            <option value="Slime">Slime</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label>Can fly: no</label>
+                        <input id="fly" value="false" class="hidden">
+                    </fieldset>
+                    <fieldset>
+                        <label>Can swim: yes</label>
+                        <input id="swim" value="true" class="hidden">
+                    </fieldset>
+                    <fieldset>
+                        <label>Color:</label>
+                        <select id=color">
+                            <option value="Blue">Blue</option>
+                            <option value="Red">Red</option>
+                            <option value="Green">Green</option>
+                        </select>
+                    </fieldset>
 
-                                <label>Legs: 0</label>
+                    <input type="reset" class="nes-btn is-error" value="Cancel">
+                    <input type="submit" class="nes-btn is-success" value="Save">
+                </form>
 
-                            </fieldset>
-                            <fieldset>
-                                <label>Eyes:</label>
-                                <select id="eyes">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    <option>7</option>
-                                    <option>8</option>
-                                </select>
-                            </fieldset>
-                            <fieldset>
-                                <label>Furtype:</label>
-                                <select id=furtype">
-                                    <option>Scales</option>
-                                    <option>Slime</option>
-                                </select>
-                            </fieldset>
-                            <fieldset>
-                                <label>Can fly: no</label>
-                            </fieldset>
-                            <fieldset>
-                                <label>Can swim: yes</label>
-                            </fieldset>
-                            <fieldset>
-                                <label>Color:</label>
-                                <select id=color">
-                                    <option>Blue</option>
-                                    <option>Red</option>
-                                    <option>Green</option>
-                                </select>
-                            </fieldset>
-                        </fieldset>
-                    </div>
-
-                    <div id="earth_template" class="hidden">
-                        <fieldset>
-                            <fieldset>
-                                <label>Arms: 2</label>
-                            </fieldset>
-                            <fieldset>
-                                <label>Type arms: Claws</label>
-                            </fieldset>
-                            <fieldset>
-                                <label>Legs:</label>
-                                <select id="legs">
-                                    <option>2</option>
-                                    <option>4</option>
-                                    <option>6</option>
-                                </select>
-                            </fieldset>
-                            <fieldset>
-                                <label>Eyes: 2</label>
-                            </fieldset>
-                            <fieldset>
-                                <label>Furtype:</label>
-                                <select id=furtype">
-                                    <option>Hair</option>
-                                    <option>Scales</option>
-                                    <option>Slime</option>
-                                </select>
-                            </fieldset>
-                            <fieldset>
-                                <label>Can fly: no</label>
-                            </fieldset>
-                            <fieldset>
-                                <label>Can swim: no</label>
-                            </fieldset>
-                            <fieldset>
-                                <label>Color:</label>
-                                <select id=color">
-                                    <option>Purple</option>
-                                    <option>Orange</option>
-                                    <option>White</option>
-                                </select>
-                            </fieldset>
-                        </fieldset>
-                    </div>
-                    <div id="wind_template" class="hidden">
-                        <fieldset>
-                            <fieldset>
-                                <label>Arms: 2</label>
-                            </fieldset>
-                            <fieldset>
-                                <label>Type arms:</label>
-                                <select id="type_arms">
-                                    <option>Wings</option>
-                                    <option>Claw-wings</option>
-                                </select>
-                            </fieldset>
-                            <fieldset>
-                                <label>Legs:</label>
-                                <select id="legs">
-                                    <option>0</option>
-                                    <option>2</option>
-                                </select>
-                            </fieldset>
-                            <fieldset>
-                                <label>Eyes: 2</label>
-                            </fieldset>
-                            <fieldset>
-                                <label>Furtype:</label>
-                                <select id=furtype">
-                                    <option>Feathers</option>
-                                    <option>Hair</option>
-                                    <option>Scales</option>
-                                </select>
-                            </fieldset>
-                            <fieldset>
-                                <label>Can fly: yes</label>
-                            </fieldset>
-                            <fieldset>
-                                <label>Can swim: no</label>
-                                <label>Can swim: yes</label>
-                            </fieldset>
-                            <fieldset>
-                                <label>Color:</label>
-                                <select id=color">
-                                    <option>White</option>
-                                    <option>Blue</option>
-                                    <option>Purple</option>
-                                </select>
-                            </fieldset>
-                        </fieldset>
-                    </div>
+            </div>
+            <div id="earth_template" class="hidden">
+                <form id="monster_form" class="align-left">
+                    <fieldset>
+                        <label>Name:</label>
+                        <input id="name" name="name">
+                    </fieldset>
+                    <input id="element" value="earth" class="hidden">
+                    <fieldset>
+                        <label>Arms: 2</label>
+                        <input id="arms" value="2" class="hidden">
+                    </fieldset>
+                    <fieldset>
+                        <label>Type arms: Claws</label>
+                        <input id="type_arms" value="Claws" class="hidden">
+                    </fieldset>
+                    <fieldset>
+                        <label>Legs:</label>
+                        <select id="legs">
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                            <option value="6">6</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label>Eyes: 2</label>
+                        <input id="eyes" value="2" class="hidden">
+                    </fieldset>
+                    <fieldset>
+                        <label>Furtype:</label>
+                        <select id=furtype">
+                            <option value="Hair">Hair</option>
+                            <option value="Scales">Scales</option>
+                            <option value="Slime">Slime</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label>Can fly: no</label>
+                        <input id="fly" value="false" class="hidden">
+                    </fieldset>
+                    <fieldset>
+                        <label>Can swim: no</label>
+                        <input id="swim" value="false" class="hidden">
+                    </fieldset>
+                    <fieldset>
+                        <label>Color:</label>
+                        <select id=color">
+                            <option value="Purple">Purple</option>
+                            <option value="Orange">Orange</option>
+                            <option value="White">White</option>
+                        </select>
+                    </fieldset>
+                    <input type="reset" class="nes-btn is-error" value="Cancel">
+                    <input type="submit" class="nes-btn is-success" value="Save">
+                </form>
+            </div>
+            <div id="wind_template" class="hidden">
+                <form id="monster_form" class="align-left">
+                    <fieldset>
+                        <label>Name:</label>
+                        <input id="name" name="name">
+                    </fieldset>
+                    <input id="element" value="wind" class="hidden">
+                    <fieldset>
+                        <label>Arms: 2</label>
+                        <input id="arms" value="2" class="hidden">
+                    </fieldset>
+                    <fieldset>
+                        <label>Type arms:</label>
+                        <select id="type_arms">
+                            <option value="Wings">Wings</option>
+                            <option value="Claw-wings">Claw-wings</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label>Legs:</label>
+                        <select id="legs">
+                            <option value="0">0</option>
+                            <option value="2">2</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label>Eyes: 2</label>
+                        <input id="eyes" value="2" class="hidden">
+                    </fieldset>
+                    <fieldset>
+                        <label>Furtype:</label>
+                        <select id="furtype" onchange="windswim()">
+                            <option value="Feathers">Feathers</option>
+                            <option value="Hair">Hair</option>
+                            <option value="Scales">Scales</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label>Can fly: yes</label>
+                        <input id="fly" value="true" class="hidden">
+                    </fieldset>
+                    <fieldset>
+                        <label>Can swim: <label id="windSwim">no</label></label>
+                        <input id="swim" value="windSwim.value" class="hidden">
+                    </fieldset>
+                    <fieldset>
+                        <label>Color:</label>
+                        <select id=color">
+                            <option value="White">White</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Purple">Purple</option>
+                        </select>
+                    </fieldset>
                     <input type="reset" class="nes-btn is-error" value="Cancel">
                     <input type="submit" class="nes-btn is-success" value="Save">
                 </form>
@@ -263,8 +294,96 @@
 
         <div class="holy-grail-sidebar-2 hg-sidebar is-dark nes-container with-title is-centered">
             <p class="title">Information</p>
+            <img src="src\Image\sun.png" width="100" height="100">
+            <p>38° Celcius</p>
+            <div class="nes-container is-rounded is-dark with-title is-centered">
+                <p class="title">Weather reaction</p>
+                <table style="width:100%">
+                    <tr>
+                        <th></th>
+                        <th>Raining</th>
+                        <th>+30°</th>
+                        <th>-30°</th>
+                    </tr>
+                    <tr>
+                        <td>Fire</td>
+                        <td class="nes-text is-error">-10%</td>
+                        <td class="nes-text is-success">+10%</td>
+                        <td>0%</td>
+                    </tr>
+                    <tr>
+                        <td>Water</td>
+                        <td class="nes-text is-success">+10%</td>
+                        <td class="nes-text is-error">-10%</td>
+                        <td>0%</td>
+                    </tr>
+                    <tr>
+                        <td>Wind</td>
+                        <td class="nes-text is-error">-10%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                    </tr>
+                    <tr>
+                        <td>Earth</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                    </tr>
+            </div>
         </div>
-
     </div>
 </body>
+
+<script>
+    function firearms() {
+        var fire_int = document.getElementById("arms").value;
+        if (fire_int <= 2) {
+            document.getElementById("fire_legs").innerHTML = 2;
+            document.getElementById("fire_legs").value = 2;
+        }
+        else {
+            document.getElementById("fire_legs").innerHTML = 0;
+            document.getElementById("fire_legs").value = 0;
+        }
+    }
+
+    function fireFeathers() {
+        var fire_fur = document.getElementById("furtype").value;
+        if (fire_fur == "Feathers") {
+            document.getElementById("fireFly").innerHTML = "yes";
+            document.getElementById("fireFly").value = true;
+
+        }
+        else {
+            document.getElementById("fireFly").innerHTML = "no";
+            document.getElementById("fireFly").value = true;
+        }
+    }
+
+    function waterarms() {
+        var water_int = document.getElementById("water_arms").value;
+        if (water_int <= 4) {
+            document.getElementById("water_legs").innerHTML = "";
+            document.getElementById("options").style.display = 'block';
+        }
+        else {
+            document.getElementById("water_legs").innerHTML = 0;
+            document.getElementById("options").style.display = 'none';
+        }
+    }
+
+    function windswim() {
+        var wind_fur = document.getElementById("furtype").value;
+        if (wind_fur == "Feathers") {
+            document.getElementById("windSwim").innerHTML = "no";
+            document.getElementById("windSwim").value = false;
+        }
+        else {
+            document.getElementById("windSwim").innerHTML = "yes";
+            document.getElementById("windSwim").value = true;
+        }
+    }
+
+</script>
+
 </html>
