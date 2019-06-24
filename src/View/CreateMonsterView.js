@@ -51,22 +51,22 @@ export class CreateMonsterView {
             document.getElementById("earth_template").style.display = 'none';
         });
 
-        this.radio_fire.
+        // this.radio_fire.
 
-        this.monsterform.addEventListener('submit', function (e) {
-            e.preventDefault();
-            controller.addMonster({
-                name: this.name.value,
-                element: this.element.value,
-                arms: this.arms.value,
-                type_arms: this.type_arms.value,
-                legs: this.legs.value,
-                eyes: this.eyes.value,
-                furtype: this.furtype.value,
-                fly: this.fly.value,
-                swim: this.swim.value,
-                color: this.color.value
-            })
-        })
+        // this.monsterform.addEventListener('submit', function (e) {
+        //     e.preventDefault();
+        //     controller.addMonster({
+        //         name: this.name.value,
+        //         element: this.element.value,
+        //         arms: this.arms.value,
+        //         type_arms: this.type_arms.value,
+        //         legs: this.legs.value,
+        //         eyes: this.eyes.value,
+        //         furtype: this.furtype.value,
+        //         fly: this.fly.value,
+        //         swim: this.swim.value,
+        //         color: this.color.value
+        //     })
+        // })
     }
 }
