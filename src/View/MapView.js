@@ -26,7 +26,7 @@ export class MapView {
 
     desert.addEventListener("click", () => {
       if (desert.disabled != true) {
-        this.loadGrid(1);
+        this.loadGrid(2);
         desert.disabled = true;
         jungle.disabled = false;
         northpole.disabled = false;
@@ -39,7 +39,7 @@ export class MapView {
 
     northpole.addEventListener("click", () => {
       if (northpole.disabled != true) {
-        this.loadGrid(2);
+        this.loadGrid(1);
         northpole.disabled = true;
         desert.disabled = false;
         jungle.disabled = false;
@@ -77,6 +77,7 @@ export class MapView {
         this.td.addEventListener("dragover", this.dragover);
         this.td.addEventListener("dragenter", this.dragenter);
         this.td.addEventListener("drop", this.drop);
+        this.td.setAttribute("id", i + "-" + y);
 
         if (this.grid[i].Columns[y] == 1) {
           this.img = document.createElement("img");
@@ -93,7 +94,7 @@ export class MapView {
             // Desert
             case 1:
                 this.img.src =
-                "../src/Resources/desertrock.png";
+                "../src/Resources/cactus.png";
               break;
 
             // Northpole
@@ -115,14 +116,6 @@ export class MapView {
       this.table.appendChild(this.tr);
     }
     this.map.appendChild(this.table);
-
-    for (let i = 0; i < this.table.rows.length; i++) {
-      for (let j = 0; j < this.table.rows[i].cells.length; j++) {
-        this.table.rows[i].cells[j].onclick = function(i, j) {
-          console.log(i + ":" + j);
-        }.bind(null, i, j);
-      }
-    }
   }
 
   drag(e) {
@@ -138,7 +131,8 @@ export class MapView {
   drop(e) {
     if(!this.hasChildNodes()) {
       let data = e.dataTransfer.getData("Text");
-      this.append(document.getElementById(data));
+      let monster = document.getElementById(data);
+      this.append(monster);
     }
   }
 }
