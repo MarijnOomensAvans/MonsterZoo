@@ -1,5 +1,6 @@
 export class MapView {
   constructor() {
+    this.STORAGE_KEY = "zoo-grid";
     this.map = document.getElementById("map");
 
     // Zoo width (zw) and zoo height (zh)
@@ -16,7 +17,6 @@ export class MapView {
     jungle.disabled = true;
     jungle.setAttribute("class", "nes-btn is-disabled");
 
-    
     // ---------------------------------------------------------------------------------------------------------
     // Buttons for switching between environments
     // ---------------------------------------------------------------------------------------------------------
@@ -62,7 +62,6 @@ export class MapView {
 
     // ---------------------------------------------------------------------------------------------------------
 
-
     // Initialse the map from jungle
     this.loadGrid(0);
   }
@@ -72,7 +71,14 @@ export class MapView {
     fetch("./map/grid.json").then(response => {
       response.json().then(json => {
         let jsonstring = JSON.stringify(json);
-        this.grid = JSON.parse(jsonstring)[terrain].grid;
+        this.wholegrid = JSON.parse(jsonstring);
+        let storage = JSON.parse(localStorage.getItem(this.STORAGE_KEY));
+        if(storage != null) {
+          this.grid = JSON.parse(localStorage.getItem(this.STORAGE_KEY));
+        } else {
+          this.grid = this.wholegrid;
+        }
+        this.selected = this.grid[terrain].grid;
         this.drawBoard(terrain);
       });
     });
@@ -99,21 +105,20 @@ export class MapView {
         this.td.addEventListener("drop", this.drop);
         this.td.setAttribute("id", i + "-" + y);
 
-        if (typeof(this.grid[i].Columns[y]) === 'object') {
+        if (typeof this.selected[i].Columns[y] === "object") {
           this.img = document.createElement("img");
           this.img.setAttribute("class", "monster");
 
           //Every monster gets an id based on their coordinates
           this.img.setAttribute("id", i + "x" + y);
-                this.img.src =
-                "../src/Resources/orangemonster.png";
+          this.img.src = "../src/Resources/orangemonster.png";
 
           this.img.draggable = true;
           this.img.addEventListener("dragstart", this.drag);
           this.td.appendChild(this.img);
         }
 
-        if (this.grid[i].Columns[y] == 1) {
+        if (this.selected[i].Columns[y] == 1) {
           this.img = document.createElement("img");
           this.img.setAttribute("class", "stone");
 
@@ -123,20 +128,17 @@ export class MapView {
           switch (terrain) {
             // Jungle
             case 0:
-                this.img.src =
-                "../src/Resources/junglerock.png";
+              this.img.src = "../src/Resources/junglerock.png";
               break;
 
             // Nortpole
             case 1:
-                this.img.src =
-                "../src/Resources/icechunk.png";
+              this.img.src = "../src/Resources/icechunk.png";
               break;
 
             // Desert
             case 2:
-                this.img.src =
-                "../src/Resources/cactus.png";
+              this.img.src = "../src/Resources/cactus.png";
               break;
 
             default:
@@ -164,7 +166,7 @@ export class MapView {
   drop(e) {
     let data = e.dataTransfer.getData("Text");
     let monster = document.getElementById(data);
-    if(!this.hasChildNodes() && monster.getAttribute("draggable") === "true") {
+    if (!this.hasChildNodes() && monster.getAttribute("draggable") === "true") {
       this.append(monster);
     }
   }
