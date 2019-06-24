@@ -11,7 +11,7 @@ export class WeatherDataService {
           return response.json();
         })
         .then(function(myJson) {
-          return JSON.stringify(myJson);
+          console.log(JSON.stringify(myJson));
         });
       }
 }
