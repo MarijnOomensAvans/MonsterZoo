@@ -68,15 +68,17 @@ export class MapView {
 
   // Fetch the right json grid based on terrian index
   loadGrid(terrain) {
+    this.terrain = terrain;
     fetch("./map/grid.json").then(response => {
       response.json().then(json => {
         let jsonstring = JSON.stringify(json);
         this.wholegrid = JSON.parse(jsonstring);
         let storage = JSON.parse(localStorage.getItem(this.STORAGE_KEY));
         if(storage != null) {
-          this.grid = JSON.parse(localStorage.getItem(this.STORAGE_KEY));
+          this.grid = storage;
         } else {
           this.grid = this.wholegrid;
+          localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.wholegrid));
         }
         this.selected = this.grid[terrain].grid;
         this.drawBoard(terrain);
@@ -100,9 +102,36 @@ export class MapView {
 
         // Drag and drop events
 
-        this.td.addEventListener("dragover", this.dragover);
-        this.td.addEventListener("dragenter", this.dragenter);
-        this.td.addEventListener("drop", this.drop);
+        this.td.addEventListener("dragover", function(e){
+          e.preventDefault();
+        });
+
+
+        this.td.addEventListener("dragenter", function(e){
+          e.preventDefault();
+        });
+
+
+        let grid = this.grid;
+        let terrain = this.terrain;
+        let storageKey = this.STORAGE_KEY;
+        this.td.addEventListener("drop", function(e){
+          let data = e.dataTransfer.getData("Text");
+          let monster = document.getElementById(data);
+          if (!this.hasChildNodes() && monster.getAttribute("draggable") === "true") {
+            let origin = monster.getAttribute("id").split("x");
+            let coordid = this.getAttribute("id").split("-");
+      
+            monster.setAttribute("id", coordid[0] + "x" + coordid[1]);
+            this.append(monster);
+
+            grid[terrain].grid[coordid[0]].Columns[coordid[1]] = { "Name": "Marijn" };
+            grid[terrain].grid[origin[0]].Columns[origin[1]] = "0";
+            localStorage.setItem(storageKey, JSON.stringify(grid));
+          }
+        });
+
+
         this.td.setAttribute("id", i + "-" + y);
 
         if (typeof this.selected[i].Columns[y] === "object") {
@@ -114,7 +143,9 @@ export class MapView {
           this.img.src = "../src/Resources/orangemonster.png";
 
           this.img.draggable = true;
-          this.img.addEventListener("dragstart", this.drag);
+          this.img.addEventListener("dragstart", function(e){
+            e.dataTransfer.setData("Text", e.target.id);
+          });
           this.td.appendChild(this.img);
         }
 
@@ -152,22 +183,5 @@ export class MapView {
       this.table.appendChild(this.tr);
     }
     this.map.appendChild(this.table);
-  }
-
-  drag(e) {
-    e.dataTransfer.setData("Text", e.target.id);
-  }
-  dragover(e) {
-    e.preventDefault();
-  }
-  dragenter(e) {
-    e.preventDefault();
-  }
-  drop(e) {
-    let data = e.dataTransfer.getData("Text");
-    let monster = document.getElementById(data);
-    if (!this.hasChildNodes() && monster.getAttribute("draggable") === "true") {
-      this.append(monster);
-    }
   }
 }
