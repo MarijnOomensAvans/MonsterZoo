@@ -118,7 +118,7 @@ export class MapView {
         this.td.addEventListener("drop", function(e){
           let data = e.dataTransfer.getData("Text");
           let monster = document.getElementById(data);
-          if (!this.hasChildNodes() && monster.getAttribute("draggable") === "true") {
+          if (!this.hasChildNodes() && monster != null) {
             let origin = monster.getAttribute("id").split("x");
             let coordid = this.getAttribute("id").split("-");
       
