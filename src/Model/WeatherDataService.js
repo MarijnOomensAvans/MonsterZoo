@@ -5,13 +5,13 @@ export class WeatherDataService {
         this.units = 'metric';
     }
 
-    getCurrentWeather(cityName) {
+    async getCurrentWeather(cityName) {
         fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${this.apikey}&units=${this.units}`)
         .then(function(response) {
           return response.json();
         })
         .then(function(myJson) {
-          console.log(JSON.stringify(myJson));
+          return myJson;
         });
       }
 }

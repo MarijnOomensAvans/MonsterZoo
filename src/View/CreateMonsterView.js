@@ -1,6 +1,8 @@
 export class CreateMonsterView {
 
   constructor(controller) {
+    this.controller = controller;
+
     this.template = document.getElementById("create_monster");
 
     this.radio_fire = document.getElementById("element_fire");
@@ -52,6 +54,9 @@ export class CreateMonsterView {
         e.dataTransfer.setData("Text", e.target.id);
       });
       created.appendChild(this.img);
+
+      controller.addMonster(this.name.value, this.element.value, this.arms.value, this.tentacles.value, this.legs.value, this.eyes.value, this.swimtype.value, this.fly.value, this.swim.value, this.colour.value, this.map.value, this.x.value, this.y.value);
+
     });
   }
 

@@ -15,7 +15,7 @@ export default class ZooController
     }
 
     addMonster(data){
-        var newMonster = new Monster(data);
+        let newMonster = new Monster(data);
         this.monsterservice.saveMonster(newMonster);
     }
 }

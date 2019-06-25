@@ -5,11 +5,14 @@ export class WeatherController {
     constructor() {
         this.weatherdata = new WeatherDataService();
         this.weatherview = new WeatherView();
+
     }
 
-    updateWeather(city) {
-        let temp = ths.weatherdata.getTemp(city);
-        let type = this.weatherdata.getType(city);
-        this.weatherview.updateWeather(temp, type);
+    async updateWeather(city) {
+        let temp = await this.weatherdata.getCurrentWeather(city);
+        console.log(temp);
+        // let temp = ths.weatherdata.getTemp(city);
+        // let type = this.weatherdata.getType(city);
+        // this.weatherview.updateWeather(temp, type);
     }
 }
