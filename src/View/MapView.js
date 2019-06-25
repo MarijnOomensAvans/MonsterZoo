@@ -166,16 +166,19 @@ export class MapView {
             // Jungle
             case 0:
               this.img.src = "../src/Resources/junglerock.png";
+              document.getElementById("map").style.backgroundColor = "#289150";
               break;
 
             // Nortpole
             case 1:
               this.img.src = "../src/Resources/icechunk.png";
+              document.getElementById("map").style.backgroundColor = "#D8FFFF";
               break;
 
             // Desert
             case 2:
               this.img.src = "../src/Resources/cactus.png";
+              document.getElementById("map").style.backgroundColor = "#EDC9AF";
               break;
 
             default:
