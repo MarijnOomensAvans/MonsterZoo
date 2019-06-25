@@ -122,12 +122,18 @@ export class MapView {
             let origin = monster.getAttribute("id").split("x");
             let coordid = this.getAttribute("id").split("-");
       
+            
+            grid[terrain].grid[coordid[0]].Columns[coordid[1]] = { "Name": "Marijn" };
+            if(monster.getAttribute('id') === '-1x-1') {
+              
+            } else {
+              grid[terrain].grid[origin[0]].Columns[origin[1]] = "0";
+            }
+
+            localStorage.setItem(storageKey, JSON.stringify(grid));
+
             monster.setAttribute("id", coordid[0] + "x" + coordid[1]);
             this.append(monster);
-
-            grid[terrain].grid[coordid[0]].Columns[coordid[1]] = { "Name": "Marijn" };
-            grid[terrain].grid[origin[0]].Columns[origin[1]] = "0";
-            localStorage.setItem(storageKey, JSON.stringify(grid));
           }
         });
 

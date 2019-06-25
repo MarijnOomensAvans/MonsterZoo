@@ -35,7 +35,7 @@
             <input id="element_earth" name="element" type="radio" value="3"><label>Earth</label>
             <input id="element_wind" name="element" type="radio" value="4"><label>Wind</label>
             <div id="fire_template" class="hidden">
-                <form id="monster_form" class="align-left">
+                <form class="align-left">
                     <fieldset>
                         <label>Name:</label>
                         <input id="name" name="name">
@@ -290,15 +290,16 @@
                     <input type="submit" class="nes-btn is-success" value="Save">
                 </form>
             </div>
-            <div id="created" class="nes-container is-dark with-title">
+            <div class="nes-container is-dark with-title">
                 <p class="title">Created</p>
+                    <div id="created"></div>
               </div>
         </div>
 
         <div class="holy-grail-sidebar-2 hg-sidebar is-dark nes-container with-title is-centered">
             <p class="title">Information</p>
-            <img src="../src/Resources/sun.png" width="100" height="100">
-            <p>38° Celcius</p>
+            <img id="weatherimg" src="../src/Resources/sun.png" width="100" height="100">
+            <p id="temp"></p>
             <div class="nes-container is-rounded is-dark with-title is-centered">
                 <p class="title">Weather reaction</p>
                 <table style="width:100%">
