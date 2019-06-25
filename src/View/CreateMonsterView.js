@@ -17,7 +17,7 @@ export class CreateMonsterView {
         this.radio_water = document.getElementById('element_water');
         this.radio_earth = document.getElementById('element_earth');
         this.radio_wind = document.getElementById('element_wind');
-        var a = document.getElementById('windfurtype');
+        this.windfurselect = document.getElementById('windfurtype');
 
         //events
         this.radio_fire.addEventListener('click', function () {
@@ -52,8 +52,8 @@ export class CreateMonsterView {
             document.getElementById("earth_template").style.display = 'none';
         });
 
-        a.addEventListener('change', function(){
-            window.alert('hey');
+        this.windfurselect.addEventListener('change', function() {
+            alert('werkt');
         });
 
 
