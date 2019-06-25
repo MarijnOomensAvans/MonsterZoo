@@ -18,6 +18,9 @@ export class CreateMonsterView {
         this.radio_earth = document.getElementById('element_earth');
         this.radio_wind = document.getElementById('element_wind');
         this.windfurselect = document.getElementById('windfurtype');
+        this.firefurselect = document.getElementById('firefurtype');
+        this.firearmsselect = document.getElementById('firearms');
+        this.waterarmsselect = document.getElementById('waterarms');
 
         //events
         this.radio_fire.addEventListener('click', function () {
@@ -52,11 +55,56 @@ export class CreateMonsterView {
             document.getElementById("earth_template").style.display = 'none';
         });
 
-        this.windfurselect.addEventListener('change', function() {
-            alert('werkt');
+
+        this.windfurselect.addEventListener('change', function () {
+            var wind_fur = document.getElementById("windfurtype").value;
+            if (wind_fur == "Feathers") {
+                document.getElementById("windSwim").innerHTML = "no";
+                document.getElementById("windSwim").value = false;
+            }
+            else {
+                document.getElementById("windSwim").innerHTML = "yes";
+                document.getElementById("windSwim").value = true;
+            }
         });
 
+        this.firefurselect.addEventListener('change', function () {
+            var fire_fur = document.getElementById("firefurtype").value;
+            if (fire_fur == "Feathers") {
+                document.getElementById("fireFly").innerHTML = "yes";
+                document.getElementById("fireFly").value = true;
 
+            }
+            else {
+                document.getElementById("fireFly").innerHTML = "no";
+                document.getElementById("fireFly").value = true;
+            }
+        });
+
+        this.waterarmsselect.addEventListener('change', function () {
+            var water_int = document.getElementById("waterarms").value;
+            if (water_int <= 4) {
+                document.getElementById("water_legs").innerHTML = "";
+                document.getElementById("options").style.display = 'block';
+            }
+            else {
+                document.getElementById("water_legs").innerHTML = 0;
+                document.getElementById("options").style.display = 'none';
+                document.getElementById("options").value = 0;
+            }
+        });
+
+        this.firearmsselect.addEventListener('change', function () {
+            var fire_int = document.getElementById("firearms").value;
+            if (fire_int <= 2) {
+                document.getElementById("fire_legs").innerHTML = 2;
+                document.getElementById("fire_legs").value = 2;
+            }
+            else {
+                document.getElementById("fire_legs").innerHTML = 0;
+                document.getElementById("fire_legs").value = 0;
+            }
+        });
 
         this.monsterform.addEventListener('submit', function (e) {
             e.preventDefault();
