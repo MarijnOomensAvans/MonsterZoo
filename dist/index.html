@@ -264,7 +264,7 @@
                     </fieldset>
                     <fieldset>
                         <label>Furtype:</label>
-                        <select id="furtype" onchange="windswim()">
+                        <select id="windfurtype">
                             <option value="Feathers">Feathers</option>
                             <option value="Hair">Hair</option>
                             <option value="Scales">Scales</option>
@@ -373,7 +373,7 @@
     }
 
     function windswim() {
-        var wind_fur = document.getElementById("furtype").value;
+        var wind_fur = document.getElementById("windfurtype").value;
         if (wind_fur == "Feathers") {
             document.getElementById("windSwim").innerHTML = "no";
             document.getElementById("windSwim").value = false;

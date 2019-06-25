@@ -17,6 +17,7 @@ export class CreateMonsterView {
         this.radio_water = document.getElementById('element_water');
         this.radio_earth = document.getElementById('element_earth');
         this.radio_wind = document.getElementById('element_wind');
+        var a = document.getElementById('windfurtype');
 
         //events
         this.radio_fire.addEventListener('click', function () {
@@ -51,22 +52,26 @@ export class CreateMonsterView {
             document.getElementById("earth_template").style.display = 'none';
         });
 
-        // this.radio_fire.
+        a.addEventListener('change', function(){
+            window.alert('hey');
+        });
 
-        // this.monsterform.addEventListener('submit', function (e) {
-        //     e.preventDefault();
-        //     controller.addMonster({
-        //         name: this.name.value,
-        //         element: this.element.value,
-        //         arms: this.arms.value,
-        //         type_arms: this.type_arms.value,
-        //         legs: this.legs.value,
-        //         eyes: this.eyes.value,
-        //         furtype: this.furtype.value,
-        //         fly: this.fly.value,
-        //         swim: this.swim.value,
-        //         color: this.color.value
-        //     })
-        // })
+
+
+        this.monsterform.addEventListener('submit', function (e) {
+            e.preventDefault();
+            controller.addMonster({
+                name: this.name.value,
+                element: this.element.value,
+                arms: this.arms.value,
+                type_arms: this.type_arms.value,
+                legs: this.legs.value,
+                eyes: this.eyes.value,
+                furtype: this.furtype.value,
+                fly: this.fly.value,
+                swim: this.swim.value,
+                color: this.color.value
+            })
+        })
     }
 }
