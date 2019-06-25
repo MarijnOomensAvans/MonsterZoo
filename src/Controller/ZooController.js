@@ -1,7 +1,6 @@
 import { MonsterService } from '../model/MonsterService'
 import { CreateMonsterView } from '../view/CreateMonsterView';
 import { MapView } from '../view/MapView';
-import { WeatherDataService } from '../Model/WeatherDataService';
 import { WeatherController } from './WeatherController';
 
 export default class ZooController
@@ -12,6 +11,7 @@ export default class ZooController
         this.createmonsterview =  new CreateMonsterView(this);
         this.mapview = new MapView();
 
+        this.weathercontroller = new WeatherController();
     }
 
     addMonster(data){
