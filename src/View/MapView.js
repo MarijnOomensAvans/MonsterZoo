@@ -112,7 +112,6 @@ export class MapView {
           e.preventDefault();
         });
 
-
         let grid = this.grid;
         let terrain = this.terrain;
         let storageKey = this.STORAGE_KEY;
