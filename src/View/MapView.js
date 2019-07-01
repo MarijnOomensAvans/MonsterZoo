@@ -63,31 +63,6 @@ export class MapView {
 
     // ---------------------------------------------------------------------------------------------------------
 
-    this.remove.addEventListener("drop", function (e) {
-      let data = e.dataTransfer.getData("Text");
-      let monster = document.getElementById(data);
-      let grid = this.grid;
-      let terrain = this.terrain;
-      let storageKey = this.STORAGE_KEY;
-      let origin = monster.getAttribute("id").split("x");
-
-      grid[terrain].grid[origin[0]].Columns[origin[1]] = "0";
-
-      localStorage.setItem(storageKey, JSON.stringify(grid));
-
-      monster.setAttribute("id", -2 + "x" + -2);
-      this.append(monster);
-    });
-
-    this.remove.addEventListener("dragover", function (e) {
-      e.preventDefault();
-    });
-
-
-    this.remove.addEventListener("dragenter", function (e) {
-      e.preventDefault();
-    });
-
     // Initialse the map from jungle
     this.loadGrid(0);
   }
@@ -141,6 +116,28 @@ export class MapView {
         let grid = this.grid;
         let terrain = this.terrain;
         let storageKey = this.STORAGE_KEY;
+
+        this.remove.addEventListener("drop", function (e) {
+          let data = e.dataTransfer.getData("Text");
+          let monster = document.getElementById(data);
+          let origin = monster.getAttribute("id").split("x");
+    
+          grid[terrain].grid[origin[0]].Columns[origin[1]] = "0";
+    
+          localStorage.setItem(storageKey, JSON.stringify(grid));
+    
+          monster.setAttribute("id", -2 + "x" + -2);
+          this.append(monster);
+        });
+    
+        this.remove.addEventListener("dragover", function (e) {
+          e.preventDefault();
+        });
+    
+        this.remove.addEventListener("dragenter", function (e) {
+          e.preventDefault();
+        });
+    
         this.td.addEventListener("drop", function (e) {
           let data = e.dataTransfer.getData("Text");
           let monster = document.getElementById(data);
