@@ -64,6 +64,7 @@ export class MapView {
     // ---------------------------------------------------------------------------------------------------------
 
     // Initialse the map from jungle
+    this.initRemove();
     this.loadGrid(0);
   }
 
@@ -79,7 +80,10 @@ export class MapView {
           this.grid = storage;
         } else {
           this.grid = this.wholegrid;
-          localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.wholegrid));
+          localStorage.setItem(
+            this.STORAGE_KEY,
+            JSON.stringify(this.wholegrid)
+          );
         }
         this.selected = this.grid[terrain].grid;
         this.drawBoard(terrain);
@@ -103,52 +107,32 @@ export class MapView {
 
         // Drag and drop events
 
-        this.td.addEventListener("dragover", function (e) {
+        this.td.addEventListener("dragover", function(e) {
           e.preventDefault();
         });
 
-
-        this.td.addEventListener("dragenter", function (e) {
+        this.td.addEventListener("dragenter", function(e) {
           e.preventDefault();
         });
-
 
         let grid = this.grid;
         let terrain = this.terrain;
         let storageKey = this.STORAGE_KEY;
 
-        this.remove.addEventListener("drop", function (e) {
+        this.td.addEventListener("drop", function(e) {
           let data = e.dataTransfer.getData("Text");
           let monster = document.getElementById(data);
-          let origin = monster.getAttribute("id").split("x");
-    
-          grid[terrain].grid[origin[0]].Columns[origin[1]] = "0";
-    
-          localStorage.setItem(storageKey, JSON.stringify(grid));
-    
-          monster.setAttribute("id", -2 + "x" + -2);
-          this.append(monster);
-        });
-    
-        this.remove.addEventListener("dragover", function (e) {
-          e.preventDefault();
-        });
-    
-        this.remove.addEventListener("dragenter", function (e) {
-          e.preventDefault();
-        });
-    
-        this.td.addEventListener("drop", function (e) {
-          let data = e.dataTransfer.getData("Text");
-          let monster = document.getElementById(data);
-          if (!this.hasChildNodes() && monster.getAttribute("draggable") === "true") {
+          if (
+            !this.hasChildNodes() &&
+            monster.getAttribute("draggable") === "true"
+          ) {
             let origin = monster.getAttribute("id").split("x");
             let coordid = this.getAttribute("id").split("-");
 
-
-            grid[terrain].grid[coordid[0]].Columns[coordid[1]] = { "Name": "Marijn" };
-            if (monster.getAttribute('id') === '-1x-1') {
-
+            grid[terrain].grid[coordid[0]].Columns[coordid[1]] = {
+              Name: "Marijn"
+            };
+            if (monster.getAttribute("id") === "-1x-1") {
             } else {
               grid[terrain].grid[origin[0]].Columns[origin[1]] = "0";
             }
@@ -159,7 +143,6 @@ export class MapView {
             this.append(monster);
           }
         });
-
 
         this.td.setAttribute("id", i + "-" + y);
 
@@ -172,7 +155,7 @@ export class MapView {
           this.img.src = "../src/Resources/orangemonster.png";
 
           this.img.draggable = true;
-          this.img.addEventListener("dragstart", function (e) {
+          this.img.addEventListener("dragstart", function(e) {
             e.dataTransfer.setData("Text", e.target.id);
           });
           this.td.appendChild(this.img);
@@ -214,5 +197,32 @@ export class MapView {
       this.table.appendChild(this.tr);
     }
     this.map.appendChild(this.table);
+  }
+
+  initRemove() {
+    let grid = this.grid;
+    let terrain = this.terrain;
+    let storageKey = this.STORAGE_KEY;
+    this.remove.addEventListener("drop", function(e) {
+      let data = e.dataTransfer.getData("Text");
+      let monster = document.getElementById(data);
+      console.log(monster);
+      let origin = monster.getAttribute("id").split("x");
+
+      grid[terrain].grid[origin[0]].Columns[origin[1]] = "0";
+
+      localStorage.setItem(storageKey, JSON.stringify(grid));
+
+      monster.setAttribute("id", -2 + "x" + -2);
+      this.append(monster);
+    });
+
+    this.remove.addEventListener("dragover", function(e) {
+      e.preventDefault();
+    });
+
+    this.remove.addEventListener("dragenter", function(e) {
+      e.preventDefault();
+    });
   }
 }
