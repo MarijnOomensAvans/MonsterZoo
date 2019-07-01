@@ -64,7 +64,6 @@ export class MapView {
     // ---------------------------------------------------------------------------------------------------------
 
     // Initialse the map from jungle
-    this.initRemove();
     this.loadGrid(0);
   }
 
@@ -86,12 +85,13 @@ export class MapView {
           );
         }
         this.selected = this.grid[terrain].grid;
-        this.drawBoard(terrain);
+        this.initRemove();
+        this.drawBoard();
       });
     });
   }
 
-  drawBoard(terrain) {
+  drawBoard() {
     let oldBoard = document.getElementById("grid");
     if (oldBoard != null) {
       oldBoard.remove();
@@ -206,7 +206,6 @@ export class MapView {
     this.remove.addEventListener("drop", function(e) {
       let data = e.dataTransfer.getData("Text");
       let monster = document.getElementById(data);
-      console.log(monster);
       let origin = monster.getAttribute("id").split("x");
 
       grid[terrain].grid[origin[0]].Columns[origin[1]] = "0";
