@@ -7,6 +7,7 @@ export class CreateMonsterView {
     this.radio_water = document.getElementById("element_water");
     this.radio_earth = document.getElementById("element_earth");
     this.radio_wind = document.getElementById("element_wind");
+    this.remove = document.getElementById("remove");
 
     this.setEvents();
   }
