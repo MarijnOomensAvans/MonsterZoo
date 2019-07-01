@@ -5,7 +5,7 @@ export class WeatherView {
         this.temp = document.getElementById('temp');
     }
 
-    updateWeather(temp, type) {
-        this.temp = `${temp}° Celcius`;
+    updateWeather(temp) {
+        this.temp.innerText = `${temp}° Celcius`;
     }
 }

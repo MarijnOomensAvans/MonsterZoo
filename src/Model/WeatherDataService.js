@@ -5,8 +5,8 @@ export class WeatherDataService {
         this.units = 'metric';
     }
 
-    async getCurrentWeather(cityName) {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${this.apikey}&units=${this.units}`)
+    getCurrentWeather(cityName) {
+        return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${this.apikey}&units=${this.units}`)
         .then(function(response) {
           return response.json();
         })
