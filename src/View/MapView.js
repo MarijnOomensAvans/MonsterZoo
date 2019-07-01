@@ -212,8 +212,7 @@ export class MapView {
 
       localStorage.setItem(storageKey, JSON.stringify(grid));
 
-      monster.setAttribute("id", -2 + "x" + -2);
-      this.append(monster);
+      monster.remove();
     });
 
     this.remove.addEventListener("dragover", function(e) {
