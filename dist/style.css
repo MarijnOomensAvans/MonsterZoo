@@ -62,6 +62,11 @@ body {
     height: 120px;
 }
 
+#remove {
+    width: 200px;
+    height: 200px;
+}
+
 @media (min-width: 768px) {
 	.holy-grail-body {
 		flex-direction: row;

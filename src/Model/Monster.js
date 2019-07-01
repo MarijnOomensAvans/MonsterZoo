@@ -4,3 +4,16 @@ class Monster{
         Object.assign(this, monsterdata);
     }
 }
+
+class fireMonster extends Monster{
+
+}
+class waterfireMonster extends Monster{
+    
+}
+class earthMonster extends Monster{
+    
+}
+class windMonster extends Monster{
+    
+}

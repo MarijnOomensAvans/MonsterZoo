@@ -2,6 +2,7 @@ export class MapView {
   constructor() {
     this.STORAGE_KEY = "zoo-grid";
     this.map = document.getElementById("map");
+    this.remove = document.getElementById("remove");
 
     // Zoo width (zw) and zoo height (zh)
 
@@ -74,19 +75,23 @@ export class MapView {
         let jsonstring = JSON.stringify(json);
         this.wholegrid = JSON.parse(jsonstring);
         let storage = JSON.parse(localStorage.getItem(this.STORAGE_KEY));
-        if(storage != null) {
+        if (storage != null) {
           this.grid = storage;
         } else {
           this.grid = this.wholegrid;
-          localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.wholegrid));
+          localStorage.setItem(
+            this.STORAGE_KEY,
+            JSON.stringify(this.wholegrid)
+          );
         }
         this.selected = this.grid[terrain].grid;
-        this.drawBoard(terrain);
+        this.initRemove();
+        this.drawBoard();
       });
     });
   }
 
-  drawBoard(terrain) {
+  drawBoard() {
     let oldBoard = document.getElementById("grid");
     if (oldBoard != null) {
       oldBoard.remove();
@@ -102,30 +107,32 @@ export class MapView {
 
         // Drag and drop events
 
-        this.td.addEventListener("dragover", function(e){
+        this.td.addEventListener("dragover", function(e) {
           e.preventDefault();
         });
 
-
-        this.td.addEventListener("dragenter", function(e){
+        this.td.addEventListener("dragenter", function(e) {
           e.preventDefault();
         });
-
 
         let grid = this.grid;
         let terrain = this.terrain;
         let storageKey = this.STORAGE_KEY;
-        this.td.addEventListener("drop", function(e){
+
+        this.td.addEventListener("drop", function(e) {
           let data = e.dataTransfer.getData("Text");
           let monster = document.getElementById(data);
-          if (!this.hasChildNodes() && monster != null) {
+          if (
+            !this.hasChildNodes() &&
+            monster.getAttribute("draggable") === "true"
+          ) {
             let origin = monster.getAttribute("id").split("x");
             let coordid = this.getAttribute("id").split("-");
-      
-            
-            grid[terrain].grid[coordid[0]].Columns[coordid[1]] = { "Name": "Marijn" };
-            if(monster.getAttribute('id') === '-1x-1') {
-              
+
+            grid[terrain].grid[coordid[0]].Columns[coordid[1]] = {
+              Name: "Marijn"
+            };
+            if (monster.getAttribute("id") === "-1x-1") {
             } else {
               grid[terrain].grid[origin[0]].Columns[origin[1]] = "0";
             }
@@ -136,7 +143,6 @@ export class MapView {
             this.append(monster);
           }
         });
-
 
         this.td.setAttribute("id", i + "-" + y);
 
@@ -149,7 +155,7 @@ export class MapView {
           this.img.src = "../src/Resources/orangemonster.png";
 
           this.img.draggable = true;
-          this.img.addEventListener("dragstart", function(e){
+          this.img.addEventListener("dragstart", function(e) {
             e.dataTransfer.setData("Text", e.target.id);
           });
           this.td.appendChild(this.img);
@@ -186,11 +192,35 @@ export class MapView {
           }
           this.td.appendChild(this.img);
         }
-
         this.tr.appendChild(this.td);
       }
       this.table.appendChild(this.tr);
     }
     this.map.appendChild(this.table);
+  }
+
+  initRemove() {
+    let grid = this.grid;
+    let terrain = this.terrain;
+    let storageKey = this.STORAGE_KEY;
+    this.remove.addEventListener("drop", function(e) {
+      let data = e.dataTransfer.getData("Text");
+      let monster = document.getElementById(data);
+      let origin = monster.getAttribute("id").split("x");
+
+      grid[terrain].grid[origin[0]].Columns[origin[1]] = "0";
+
+      localStorage.setItem(storageKey, JSON.stringify(grid));
+
+      monster.remove();
+    });
+
+    this.remove.addEventListener("dragover", function(e) {
+      e.preventDefault();
+    });
+
+    this.remove.addEventListener("dragenter", function(e) {
+      e.preventDefault();
+    });
   }
 }
