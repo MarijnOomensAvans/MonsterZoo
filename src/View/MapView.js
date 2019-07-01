@@ -69,8 +69,9 @@ export class MapView {
       let grid = this.grid;
       let terrain = this.terrain;
       let storageKey = this.STORAGE_KEY;
+      let origin = monster.getAttribute("id").split("x");
 
-     grid[terrain].grid[origin[0]].Columns[origin[1]] = "0";
+      grid[terrain].grid[origin[0]].Columns[origin[1]] = "0";
 
       localStorage.setItem(storageKey, JSON.stringify(grid));
 
