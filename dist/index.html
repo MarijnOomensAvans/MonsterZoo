@@ -43,7 +43,7 @@
                     <input id="element" value="fire" class="hidden">
                     <fieldset>
                         <label>Arms:</label>
-                        <select id="arms" onchange="firearms()">
+                        <select id="firearms">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -51,6 +51,7 @@
                             <option value="5">5</option>
                             <option value="6">6</option>
                         </select>
+                        <input id="arms" value="firearms.value" class="hidden">
                     </fieldset>
                     <fieldset>
                         <label>Type arms:</label>
@@ -75,7 +76,7 @@
                     </fieldset>
                     <fieldset>
                         <label>Furtype:</label>
-                        <select id="furtype" onchange="fireFeathers()">
+                        <select id="firefurtype">
                             <option value="Scales">Scales</option>
                             <option value="Feathers">Feathers</option>
                         </select>
@@ -109,7 +110,7 @@
                     <input id="element" value="water" class="hidden">
                     <fieldset>
                         <label>Arms:</label>
-                        <select id="arms" onchange="waterarms()">
+                        <select id="waterarms">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -119,6 +120,7 @@
                             <option value="7">7</option>
                             <option value="8">8</option>
                         </select>
+                        <input id="arms" value="waterarms.value" class="hidden">
                     </fieldset>
                     <fieldset>
                         <label>Type arms:</label>
@@ -135,6 +137,7 @@
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
+                        <input id="legs" value="options.value" class="hidden">
                     </fieldset>
                     <fieldset>
                         <label>Eyes:</label>
@@ -264,7 +267,7 @@
                     </fieldset>
                     <fieldset>
                         <label>Furtype:</label>
-                        <select id="furtype" onchange="windswim()">
+                        <select id="windfurtype">
                             <option value="Feathers">Feathers</option>
                             <option value="Hair">Hair</option>
                             <option value="Scales">Scales</option>
@@ -342,57 +345,5 @@
         </div>
     </div>
 </body>
-
-<script>
-    function firearms() {
-        var fire_int = document.getElementById("arms").value;
-        if (fire_int <= 2) {
-            document.getElementById("fire_legs").innerHTML = 2;
-            document.getElementById("fire_legs").value = 2;
-        }
-        else {
-            document.getElementById("fire_legs").innerHTML = 0;
-            document.getElementById("fire_legs").value = 0;
-        }
-    }
-
-    function fireFeathers() {
-        var fire_fur = document.getElementById("furtype").value;
-        if (fire_fur == "Feathers") {
-            document.getElementById("fireFly").innerHTML = "yes";
-            document.getElementById("fireFly").value = true;
-
-        }
-        else {
-            document.getElementById("fireFly").innerHTML = "no";
-            document.getElementById("fireFly").value = true;
-        }
-    }
-
-    function waterarms() {
-        var water_int = document.getElementById("water_arms").value;
-        if (water_int <= 4) {
-            document.getElementById("water_legs").innerHTML = "";
-            document.getElementById("options").style.display = 'block';
-        }
-        else {
-            document.getElementById("water_legs").innerHTML = 0;
-            document.getElementById("options").style.display = 'none';
-        }
-    }
-
-    function windswim() {
-        var wind_fur = document.getElementById("furtype").value;
-        if (wind_fur == "Feathers") {
-            document.getElementById("windSwim").innerHTML = "no";
-            document.getElementById("windSwim").value = false;
-        }
-        else {
-            document.getElementById("windSwim").innerHTML = "yes";
-            document.getElementById("windSwim").value = true;
-        }
-    }
-
-</script>
 
 </html>
