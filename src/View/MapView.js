@@ -1,8 +1,10 @@
 export class MapView {
-  constructor() {
+  constructor(weathercontroller) {
     this.STORAGE_KEY = "zoo-grid";
     this.map = document.getElementById("map");
     this.remove = document.getElementById("remove");
+
+    this.weathercontroller = weathercontroller;
 
     // Zoo width (zw) and zoo height (zh)
 
@@ -85,6 +87,7 @@ export class MapView {
           );
         }
         this.selected = this.grid[terrain].grid;
+        this.weathercontroller.updateWeather(this.grid[terrain].reference_city);
         this.initRemove();
         this.drawBoard();
       });

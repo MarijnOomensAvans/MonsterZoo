@@ -6,7 +6,7 @@
     
     "climate":"bear grylls approved temperature",
     
-    "reference city": "Rio",
+    "reference_city": "Rio",
     
     "grid": [
     
@@ -38,7 +38,7 @@
     
     "climate":"sub-zero cold",
     
-    "reference city": "Amsterdam",
+    "reference_city": "Amsterdam",
     
     "grid": [
     
@@ -70,7 +70,7 @@
     
     "climate":"burning hot",
     
-    "reference city": "Marrakech",
+    "reference_city": "Marrakech",
     
     "grid": [
     

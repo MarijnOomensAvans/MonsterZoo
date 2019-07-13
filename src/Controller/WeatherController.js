@@ -5,8 +5,6 @@ export class WeatherController {
     constructor() {
         this.weatherdata = new WeatherDataService();
         this.weatherview = new WeatherView();
-
-        this.updateWeather('Amsterdam');
     }
 
     updateWeather(city) {
