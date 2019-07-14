@@ -1,9 +1,10 @@
 export class MapView {
-  constructor(weathercontroller) {
+  constructor(zoocontroller, weathercontroller) {
     this.STORAGE_KEY = "zoo-grid";
     this.map = document.getElementById("map");
     this.remove = document.getElementById("remove");
 
+    this.zoocontroller = zoocontroller;
     this.weathercontroller = weathercontroller;
 
     // Zoo width (zw) and zoo height (zh)
@@ -65,33 +66,22 @@ export class MapView {
 
     // ---------------------------------------------------------------------------------------------------------
 
-    // Initialse the map from jungle
+    // Initialise the map from jungle
     this.loadGrid(0);
   }
 
-  // Fetch the right json grid based on terrian index
   loadGrid(terrain) {
+    // Terrain index: 0 is jungle, 1 is northpole, 3 is desert
     this.terrain = terrain;
-    fetch("./map/grid.json").then(response => {
-      response.json().then(json => {
-        let jsonstring = JSON.stringify(json);
-        this.wholegrid = JSON.parse(jsonstring);
-        let storage = JSON.parse(localStorage.getItem(this.STORAGE_KEY));
-        if (storage != null) {
-          this.grid = storage;
-        } else {
-          this.grid = this.wholegrid;
-          localStorage.setItem(
-            this.STORAGE_KEY,
-            JSON.stringify(this.wholegrid)
-          );
-        }
-        this.selected = this.grid[terrain].grid;
-        this.weathercontroller.updateWeather(this.grid[terrain].reference_city);
-        this.initRemove();
-        this.drawBoard();
-      });
-    });
+    this.zoocontroller.loadGrid(this);
+  }
+
+  paintGrid(grid) {
+    this.grid = grid;
+    this.selected = this.grid[this.terrain].grid;
+    this.weathercontroller.updateWeather(this.grid[this.terrain].reference_city);
+    this.initRemove();
+    this.drawBoard();
   }
 
   drawBoard() {
