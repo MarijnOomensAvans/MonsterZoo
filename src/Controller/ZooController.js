@@ -17,6 +17,14 @@ export default class ZooController
         this.mapview = new MapView(this, this.weathercontroller);
     }
 
+    addMonsterToGrid(grid, terrain, monster, x, y) {
+        this.mapservice.addMonsterToGrid(grid, terrain, monster, x, y);
+    }
+
+    deleteMonsterFromGrid(grid, terrain, x, y) {
+        this.mapservice.deleteMonsterFromGrid(grid, terrain, x, y);
+    }
+
     addMonster(data){
         let newMonster = new Monster(data);
         this.monsterservice.saveMonster(newMonster);

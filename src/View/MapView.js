@@ -99,7 +99,6 @@ export class MapView {
         this.td = document.createElement("td");
 
         // Drag and drop events
-
         this.td.addEventListener("dragover", function(e) {
           e.preventDefault();
         });
@@ -110,30 +109,30 @@ export class MapView {
 
         let grid = this.grid;
         let terrain = this.terrain;
+        let zoocontroller = this.zoocontroller;
         let storageKey = this.STORAGE_KEY;
 
         this.td.addEventListener("drop", function(e) {
           let data = e.dataTransfer.getData("Text");
           let monster = document.getElementById(data);
-          if (
-            !this.hasChildNodes() &&
-            monster.getAttribute("draggable") === "true"
-          ) {
-            let origin = monster.getAttribute("id").split("x");
-            let coordid = this.getAttribute("id").split("-");
 
-            grid[terrain].grid[coordid[0]].Columns[coordid[1]] = {
-              Name: "Marijn"
-            };
-            if (monster.getAttribute("id") === "-1x-1") {
-            } else {
-              grid[terrain].grid[origin[0]].Columns[origin[1]] = "0";
+          if(monster != null) {
+            if (
+              !this.hasChildNodes() &&
+              monster.getAttribute("draggable") === "true"
+            ) {
+              let origin = monster.getAttribute("id").split("x");
+              let coordid = this.getAttribute("id").split("-");
+  
+              zoocontroller.addMonsterToGrid(grid, terrain, { Name: "Marijn" }, coordid[0], coordid[1]);
+  
+              if (monster.getAttribute("id") !== "-1x-1") {
+                zoocontroller.deleteMonsterFromGrid(grid, terrain, origin[0], origin[1]);
+              }
+  
+              monster.setAttribute("id", coordid[0] + "x" + coordid[1]);
+              this.append(monster);
             }
-
-            localStorage.setItem(storageKey, JSON.stringify(grid));
-
-            monster.setAttribute("id", coordid[0] + "x" + coordid[1]);
-            this.append(monster);
           }
         });
 
@@ -196,14 +195,14 @@ export class MapView {
     let grid = this.grid;
     let terrain = this.terrain;
     let storageKey = this.STORAGE_KEY;
+    let zoocontroller = this.zoocontroller;
+
     this.remove.addEventListener("drop", function(e) {
       let data = e.dataTransfer.getData("Text");
       let monster = document.getElementById(data);
       let origin = monster.getAttribute("id").split("x");
 
-      grid[terrain].grid[origin[0]].Columns[origin[1]] = "0";
-
-      localStorage.setItem(storageKey, JSON.stringify(grid));
+      zoocontroller.deleteMonsterFromGrid(grid, terrain, origin[0], origin[1]);
 
       monster.remove();
     });

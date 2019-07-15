@@ -15,13 +15,26 @@ export class MapService {
 
         // If the grid is not present in localstorage yet, put the whole grid as loaded from the local grid.json file in there
         } else {
-          localStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify(grid)
-          );
+          this.saveToLocalStorage(grid);
         }
 
         return grid;
       });
   }
+
+  addMonsterToGrid(grid, terrain, monster, x, y) {
+    grid[terrain].grid[x].Columns[y] = monster;
+    this.saveToLocalStorage(grid);
+  }
+
+  deleteMonsterFromGrid(grid, terrain, x, y) {
+    grid[terrain].grid[x].Columns[y] = "0";
+    this.saveToLocalStorage(grid);
+  }
+
+  saveToLocalStorage(grid) {
+    let STORAGE_KEY = "zoo-grid";
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(grid));
+  }
+
 }
