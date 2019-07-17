@@ -17,8 +17,8 @@ export default class ZooController
         this.mapview = new MapView(this, this.weathercontroller);
     }
 
-    addMonsterToGrid(grid, terrain, monster, x, y) {
-        this.mapservice.addMonsterToGrid(grid, terrain, monster, x, y);
+    addMonsterToGrid(grid, terrain, x, y) {
+        this.mapservice.addMonsterToGrid(grid, terrain, this.getLastMonster(), x, y);
     }
 
     deleteMonsterFromGrid(grid, terrain, x, y) {
@@ -34,5 +34,9 @@ export default class ZooController
         this.mapservice.loadGrid().then(function(grid) {
             mapview.paintGrid(grid);
         });
+    }
+
+    getLastMonster() {
+        return this.monsterservice.getLastMonster();
     }
 }

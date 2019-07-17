@@ -1,6 +1,5 @@
 export class MapView {
   constructor(zoocontroller, weathercontroller) {
-    this.STORAGE_KEY = "zoo-grid";
     this.map = document.getElementById("map");
     this.remove = document.getElementById("remove");
 
@@ -110,7 +109,6 @@ export class MapView {
         let grid = this.grid;
         let terrain = this.terrain;
         let zoocontroller = this.zoocontroller;
-        let storageKey = this.STORAGE_KEY;
 
         this.td.addEventListener("drop", function(e) {
           let data = e.dataTransfer.getData("Text");
@@ -124,7 +122,7 @@ export class MapView {
               let origin = monster.getAttribute("id").split("x");
               let coordid = this.getAttribute("id").split("-");
   
-              zoocontroller.addMonsterToGrid(grid, terrain, { Name: "Marijn" }, coordid[0], coordid[1]);
+              zoocontroller.addMonsterToGrid(grid, terrain, coordid[0], coordid[1]);
   
               if (monster.getAttribute("id") !== "-1x-1") {
                 zoocontroller.deleteMonsterFromGrid(grid, terrain, origin[0], origin[1]);
@@ -194,17 +192,18 @@ export class MapView {
   initRemove() {
     let grid = this.grid;
     let terrain = this.terrain;
-    let storageKey = this.STORAGE_KEY;
     let zoocontroller = this.zoocontroller;
 
     this.remove.addEventListener("drop", function(e) {
       let data = e.dataTransfer.getData("Text");
       let monster = document.getElementById(data);
-      let origin = monster.getAttribute("id").split("x");
+      if(monster != null) {
+        let origin = monster.getAttribute("id").split("x");
 
-      zoocontroller.deleteMonsterFromGrid(grid, terrain, origin[0], origin[1]);
+        zoocontroller.deleteMonsterFromGrid(grid, terrain, origin[0], origin[1]);
 
-      monster.remove();
+        monster.remove();
+      }
     });
 
     this.remove.addEventListener("dragover", function(e) {

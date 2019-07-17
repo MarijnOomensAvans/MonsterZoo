@@ -15,7 +15,7 @@ export class MapService {
 
         // If the grid is not present in localstorage yet, put the whole grid as loaded from the local grid.json file in there
         } else {
-          this.saveToLocalStorage(grid);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(grid));
         }
 
         return grid;
