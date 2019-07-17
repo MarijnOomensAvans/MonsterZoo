@@ -10,7 +10,7 @@ export class WeatherController {
     updateWeather(city) {
         let weatherview = this.weatherview;
         this.weatherdata.getCurrentWeather(city).then(function(data) {
-            weatherview.updateWeather(data.main.temp);
+            weatherview.updateWeather(data.main.temp, data.weather[0].main);
         });
     }
 }
