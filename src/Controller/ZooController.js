@@ -26,8 +26,7 @@ export default class ZooController
     }
 
     addMonster(data){
-        let newMonster = new Monster(data);
-        this.monsterservice.saveMonster(newMonster);
+        this.monsterservice.saveMonster(data);
     }
 
     loadGrid(mapview) {
