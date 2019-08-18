@@ -14,7 +14,7 @@ export class CreateMonsterView {
     this.setEvents();
   }
 
-  updateForm() {
+  updateForm(controller) {
     this.monsterform = document.getElementById("monster_form");
     let created = document.getElementById("created");
 
@@ -56,7 +56,7 @@ export class CreateMonsterView {
       });
       created.appendChild(this.img);
 
-      controller.addMonster(this.name.value, this.element.value, this.arms.value, this.tentacles.value, this.legs.value, this.eyes.value, this.swimtype.value, this.fly.value, this.swim.value, this.colour.value, this.map.value, this.x.value, this.y.value);
+      controller.addMonster(this.name.value/*, this.element.value, this.arms.value, this.tentacles.value, this.legs.value, this.eyes.value, this.swimtype.value, this.fly.value, this.swim.value, this.colour.value, this.map.value, this.x.value, this.y.value*/);
 
     });
   }
@@ -83,7 +83,7 @@ export class CreateMonsterView {
       }
     });
 
-    this.radio_fire.addEventListener("click", this.updateForm);
+    this.radio_fire.addEventListener("click", this.updateForm(this.controller));
 
     this.radio_water.addEventListener("click", function() {
       let watertemp = document.getElementById("water_template");
@@ -103,7 +103,7 @@ export class CreateMonsterView {
         .childNodes[1].removeAttribute("id");
     });
 
-    this.radio_water.addEventListener("click", this.updateForm);
+    this.radio_water.addEventListener("click", this.updateForm(this.controller));
 
     this.radio_earth.addEventListener("click", function() {
       let earthtemp = document.getElementById("earth_template");
@@ -123,7 +123,7 @@ export class CreateMonsterView {
         .childNodes[1].removeAttribute("id");
     });
 
-    this.radio_earth.addEventListener("click", this.updateForm);
+    this.radio_earth.addEventListener("click", this.updateForm(this.controller));
 
     this.radio_wind.addEventListener("click", function() {
       let windtemp = document.getElementById("wind_template");
@@ -143,6 +143,6 @@ export class CreateMonsterView {
         .childNodes[1].removeAttribute("id");
     });
 
-    this.radio_wind.addEventListener("click", this.updateForm);
+    this.radio_wind.addEventListener("click", this.updateForm(this.controller));
   }
 }
