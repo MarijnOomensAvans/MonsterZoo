@@ -56,7 +56,8 @@ export class CreateMonsterView {
       });
       created.appendChild(this.img);
 
-      controller.addMonster("Name"/*this.element.value, this.name.value, this.arms.value, this.tentacles.value, this.legs.value, this.eyes.value, this.swimtype.value, this.fly.value, this.swim.value, this.colour.value, this.map.value, this.x.value, this.y.value*/);
+      let name = document.getElementById("name");
+      controller.addMonster(name/*this.element.value, this.name.value, this.arms.value, this.tentacles.value, this.legs.value, this.eyes.value, this.swimtype.value, this.fly.value, this.swim.value, this.colour.value, this.map.value, this.x.value, this.y.value*/);
 
     });
   }
