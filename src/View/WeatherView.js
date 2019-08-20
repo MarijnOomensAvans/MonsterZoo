@@ -3,13 +3,32 @@ export class WeatherView {
     constructor() {
         this.img = document.getElementById('weatherimg');
         this.temp = document.getElementById('temp');
+        this.rain = false;
+
+        this.initRainSwitch();
+    }
+
+    initRainSwitch() {
+        let rainswitch = document.getElementById('rainswitch');
+        let ownclass = this;
+        rainswitch.addEventListener("click", function(e) {
+            e.preventDefault();
+            if(ownclass.rain) {
+                ownclass.updateWeather(ownclass.temperature, "Clear");
+                ownclass.rain = false;
+            } else {
+                ownclass.updateWeather(ownclass.temperature, "Rain");
+            }
+        });
     }
 
     updateWeather(temp, rain) {
+        this.temperature = temp;
         this.temp.innerText = `${temp}° Celcius`;
 
 
         if(rain === 'Rain' || rain === 'Shower rain') {
+            this.rain = true;
             if(document.getElementById('rain') === null) {
                 let canvas = document.createElement('canvas');
                 canvas.setAttribute('id', 'rain');
