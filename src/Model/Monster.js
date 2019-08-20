@@ -1,8 +1,8 @@
 export class Monster{
     // MonsterData consists of element, name, arms, type_arms, legs, eyes, skintype, ability to fly, ability to swim, colour ,map, x coordinate, y coordinate
-    constructor(/*element, */name/*, arms, type_arms, legs, eyes, skintype, fly, swim, colour ,map, x, y*/){
-       // this.element = element;
+    constructor(name, element/*, arms, type_arms, legs, eyes, skintype, fly, swim, colour ,map, x, y*/){
         this.name = name;
+        this.element = element;
         // this.arms = arms;
         // this.type_arms = type_arms;
         // this.legs = legs;
