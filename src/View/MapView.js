@@ -124,12 +124,21 @@ export class MapView {
               let origin = monster.getAttribute("id").split("x");
               let coordid = this.getAttribute("id").split("-");
 
-              zoocontroller.addMonsterToGrid(
-                grid,
-                terrain,
-                coordid[0],
-                coordid[1]
-              );
+              if(monster.getAttribute("id") === "-1x-1") {
+                zoocontroller.addMonsterToGrid(
+                  grid,
+                  terrain,
+                  coordid[0],
+                  coordid[1]
+                );
+              } else {
+                zoocontroller.addExistingMonsterToGrid(
+                  grid,
+                  terrain,
+                  coordid[0],
+                  coordid[1]
+                );
+              }
 
               if (monster.getAttribute("id") !== "-1x-1") {
                 zoocontroller.deleteMonsterFromGrid(

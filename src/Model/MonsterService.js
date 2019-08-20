@@ -22,4 +22,5 @@ export class MonsterService
     getLastMonster() {
         return this.monsters[this.monsters.length -1];
     }
+    
 }
