@@ -78,7 +78,9 @@ export class MapView {
   paintGrid(grid) {
     this.grid = grid;
     this.selected = this.grid[this.terrain].grid;
-    this.weathercontroller.updateWeather(this.grid[this.terrain].reference_city);
+    this.weathercontroller.updateWeather(
+      this.grid[this.terrain].reference_city
+    );
     this.initRemove();
     this.drawBoard();
   }
@@ -114,20 +116,30 @@ export class MapView {
           let data = e.dataTransfer.getData("Text");
           let monster = document.getElementById(data);
 
-          if(monster != null) {
+          if (monster != null) {
             if (
               !this.hasChildNodes() &&
               monster.getAttribute("draggable") === "true"
             ) {
               let origin = monster.getAttribute("id").split("x");
               let coordid = this.getAttribute("id").split("-");
-  
-              zoocontroller.addMonsterToGrid(grid, terrain, coordid[0], coordid[1]);
-  
+
+              zoocontroller.addMonsterToGrid(
+                grid,
+                terrain,
+                coordid[0],
+                coordid[1]
+              );
+
               if (monster.getAttribute("id") !== "-1x-1") {
-                zoocontroller.deleteMonsterFromGrid(grid, terrain, origin[0], origin[1]);
+                zoocontroller.deleteMonsterFromGrid(
+                  grid,
+                  terrain,
+                  origin[0],
+                  origin[1]
+                );
               }
-  
+
               monster.setAttribute("id", coordid[0] + "x" + coordid[1]);
               this.append(monster);
             }
@@ -137,12 +149,31 @@ export class MapView {
         this.td.setAttribute("id", i + "-" + y);
 
         if (typeof this.selected[i].Columns[y] === "object") {
+          let monster = this.selected[i].Columns[y];
           this.img = document.createElement("img");
           this.img.setAttribute("class", "monster");
 
           //Every monster gets an id based on their coordinates
           this.img.setAttribute("id", i + "x" + y);
-          this.img.src = "../src/Resources/orangemonster.png";
+
+          switch (monster.element) {
+            case "fire":
+              this.img.src = "../src/Resources/orangemonster.png";
+              break;
+            case "water":
+              this.img.src = "../src/Resources/bluemonster.png";
+              break;
+            case "earth":
+              this.img.src = "../src/Resources/brownmonster.png";
+              break;
+            case "wind":
+              this.img.src = "../src/Resources/whitemonster.png";
+              break;
+
+            default:
+              alert("Warning: could not find resource for monster");
+              break;
+          }
 
           this.img.draggable = true;
           this.img.addEventListener("dragstart", function(e) {
@@ -197,10 +228,15 @@ export class MapView {
     this.remove.addEventListener("drop", function(e) {
       let data = e.dataTransfer.getData("Text");
       let monster = document.getElementById(data);
-      if(monster != null) {
+      if (monster != null) {
         let origin = monster.getAttribute("id").split("x");
 
-        zoocontroller.deleteMonsterFromGrid(grid, terrain, origin[0], origin[1]);
+        zoocontroller.deleteMonsterFromGrid(
+          grid,
+          terrain,
+          origin[0],
+          origin[1]
+        );
 
         monster.remove();
       }

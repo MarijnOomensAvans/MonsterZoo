@@ -23,6 +23,9 @@ export class MapService {
   }
 
   addMonsterToGrid(grid, terrain, monster, x, y) {
+    monster.x = x;
+    monster.y = y;
+    monster.map = terrain;
     grid[terrain].grid[x].Columns[y] = monster;
     this.saveToLocalStorage(grid);
   }

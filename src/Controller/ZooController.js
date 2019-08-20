@@ -25,8 +25,8 @@ export default class ZooController
         this.mapservice.deleteMonsterFromGrid(grid, terrain, x, y);
     }
 
-    addMonster(data){
-        this.monsterservice.saveMonster(data);
+    addMonster(name, element, arms, typearms, legs, eyes, furtype, fly, swim, colour, map, x, y){
+        this.monsterservice.saveMonster(name, element, arms, typearms, legs, eyes, furtype, fly, swim, colour, map, x, y);
     }
 
     loadGrid(mapview) {

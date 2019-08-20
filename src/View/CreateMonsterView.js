@@ -61,9 +61,16 @@ export class CreateMonsterView {
 
       let name = document.getElementById("name").value;
       let element = document.getElementById("element").value;
-      console.log(element);
-      console.log(name);
-      controller.addMonster(name, element/*this.name.value, this.arms.value, this.tentacles.value, this.legs.value, this.eyes.value, this.swimtype.value, this.fly.value, this.swim.value, this.colour.value, this.map.value, this.x.value, this.y.value*/);
+      let arms = document.getElementById("arms").value;
+      let typearms = document.getElementById("type_arms").value;
+      let legs = document.getElementById("legs").value;
+      let eyes = document.getElementById("eyes").value;
+      let furtype = document.getElementById("furtype").value;
+      let fly = document.getElementById("fly").value;
+      let swim = document.getElementById("swim").value;
+      let colour = document.getElementById("colour").value;
+      
+      controller.addMonster(name, element, arms, typearms, legs, eyes, furtype, fly, swim, colour, null, null, null);
 
     });
   }
@@ -97,7 +104,7 @@ export class CreateMonsterView {
             let armslabel = document.createElement("label");
             armslabel.innerHTML = "Arms:";
             let select = document.createElement("select");
-            select.setAttribute("id", "firearms");
+            select.setAttribute("id", "arms");
             for(let i = 1; i < 7; i++) {
               let option = document.createElement("option");
               option.setAttribute("value", `${i}`);
@@ -148,11 +155,28 @@ export class CreateMonsterView {
             fieldset4.appendChild(legsinput);
             form.appendChild(fieldset4);
 
+            let fieldset9 = document.createElement("fieldset");
+            let eyeslabel = document.createElement("label");
+            eyeslabel.innerHTML = "Eyes:";
+            let select2 = document.createElement("select");
+            select2.setAttribute("id", "eyes");
+            for(let i = 1; i < 5; i++) {
+              let option = document.createElement("option");
+              option.setAttribute("value", `${i}`);
+              option.innerHTML = i;
+              select2.appendChild(option);
+            }
+
+            fieldset9.appendChild(eyeslabel);
+            fieldset9.appendChild(select2);
+
+            form.append(fieldset9);
+
             let fieldset5 = document.createElement("fieldset");
             let furtypelabel = document.createElement("label");
             furtypelabel.innerHTML = "Fur type:";
             let typefurselect = document.createElement("select");
-            typefurselect.setAttribute("id", "firefurtype");
+            typefurselect.setAttribute("id", "furtype");
             let option11 = document.createElement("option");
             option11.setAttribute("value", "scales");
             option11.innerHTML = "Scales";
@@ -198,7 +222,7 @@ export class CreateMonsterView {
             colourlabel.innerHTML = "Colour:"
 
             let colourselect = document.createElement("select");
-            colourselect.setAttribute("id", "color");
+            colourselect.setAttribute("id", "colour");
             let option111 = document.createElement("option");
             option111.setAttribute("value", "red");
             option111.innerHTML = "Red";

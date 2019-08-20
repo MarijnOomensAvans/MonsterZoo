@@ -14,13 +14,12 @@ export class MonsterService
         return this.monsters;
     }
 
-    saveMonster(data){
-        let newMonster = new Monster(data);
+    saveMonster(name, element, arms, typearms, legs, eyes, furtype, fly, swim, colour, map, x, y){
+        let newMonster = new Monster(name, element, arms, typearms, legs, eyes, furtype, fly, swim, colour, map, x, y);
         this.monsters.push(newMonster);
     }
 
     getLastMonster() {
-        console.log(this.monsters[this.monsters.length -1]);
         return this.monsters[this.monsters.length -1];
     }
 }
