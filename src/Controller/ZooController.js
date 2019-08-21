@@ -13,10 +13,10 @@ export default class ZooController
         this.monsterservice = new MonsterService();
         this.createmonsterview =  new CreateMonsterView(this);
         this.mapservice = new MapService();
-        this.fireMonster = new this.firemonster();
-        this.waterMonster = new this.waterMonster();
-        this.earthMonster =  new this.earthMonster();
-        this.windMonster = new this.windMonster();
+        this.fireMonster = new FireMonster();
+        this.waterMonster = new WaterMonster();
+        this.earthMonster =  new EarthMonster();
+        this.windMonster = new WindMonster();
 
         this.mapview = new MapView(this, this.weathercontroller);
     }
