@@ -56,8 +56,7 @@ export default class ZooController
     }
 
     interaction(grid, map) {
-        let monsters = this.monsterservice.getAllMonsters(grid, map);
-        
+        let monsters = this.monsterservice.getAllMonsters(grid, map);  
     }
 
     getArms(value){
