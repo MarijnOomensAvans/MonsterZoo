@@ -59,16 +59,16 @@ export default class ZooController
         let arms;
         switch(value) {
             case fire:
-                this.fireMonster.arms;
+                arms = this.fireMonster.arms;
                 break;
             case water:
-                this.waterMonster.arms;
+                arms = this.waterMonster.arms;
                 break;
             case wind:
-                this.windMonster.arms;
+                arms = this.windMonster.arms;
                 break;
             case earth:
-                this.earthMonster.arms
+                arms = this.earthMonster.arms
                 break;
             default:
                 arms = 0;

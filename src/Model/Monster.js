@@ -22,7 +22,7 @@ export class FireMonster extends Monster{
         super();
         this.arms = [1,2,3,4,5,6];
         this.typearms = ["Tentacles","Claws","Claw-wings"];
-        this.legs = 2;
+        this.legs = [2];
         this.eyes = [1,2,3,4];
         this.furtype = ["Scales","Feathers"];
         this.fly = "yes";
@@ -48,11 +48,11 @@ export class WaterMonster extends Monster{
 export class EarthMonster extends Monster{
     constructor(){
         super();
-        this.arms = 2;
+        this.arms = [2];
         this.typearms = "Claws";
         this.legs = [2,4,6];
-        this.eyes = 2;
-        this.furtype = [Hair,Scales,Slime];
+        this.eyes = [2];
+        this.furtype = ["Hair","Scales","Slime"];
         this.fly = "no";
         this.swim = "no";
         this.color = ["Purple","Orange","White"];
@@ -62,11 +62,11 @@ export class EarthMonster extends Monster{
 export  class WindMonster extends Monster{
     constructor(){
         super();
-        this.arms = 2;
+        this.arms = [2];
         this.typearms = ["Wings","Claw-wings"];
         this.legs = [0,2];
-        this.eyes = 2;
-        this.furtype = [Feathers,Hair,Scales];
+        this.eyes = [2];
+        this.furtype = ["Feathers","Hair","Scales"];
         this.fly = "yes";
         this.swim = "no";
         this.color = ["White","Blue","Purple"];
