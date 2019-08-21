@@ -3,6 +3,10 @@ import { CreateMonsterView } from '../view/CreateMonsterView';
 import { MapView } from '../view/MapView';
 import { WeatherController } from './WeatherController';
 import { MapService } from '../Model/MapService';
+import { FireMonster } from '../Model/Monster';
+import { WaterMonster } from '../Model/Monster';
+import { EarthMonster } from '../Model/Monster';
+import { WindMonster } from '../Model/Monster';
 
 export default class ZooController
 {

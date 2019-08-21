@@ -19,6 +19,7 @@ export class Monster{
 
 export class FireMonster extends Monster{
     constructor(){
+        super();
         this.arms = [1,2,3,4,5,6];
         this.typearms = ["Tentacles","Claws","Claw-wings"];
         this.legs = 2;
@@ -32,6 +33,7 @@ export class FireMonster extends Monster{
 
 export class WaterMonster extends Monster{
     constructor(){
+        super();
         this.arms = [1,2,3,4,5,6,7,8];
         this.typearms = ["Tentacles","Fins"];
         this.legs = [1,2,3,4];
@@ -45,6 +47,7 @@ export class WaterMonster extends Monster{
 
 export class EarthMonster extends Monster{
     constructor(){
+        super();
         this.arms = 2;
         this.typearms = "Claws";
         this.legs = [2,4,6];
@@ -58,6 +61,7 @@ export class EarthMonster extends Monster{
 
 export  class WindMonster extends Monster{
     constructor(){
+        super();
         this.arms = 2;
         this.typearms = ["Wings","Claw-wings"];
         this.legs = [0,2];
