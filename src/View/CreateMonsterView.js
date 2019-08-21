@@ -147,6 +147,15 @@ export class CreateMonsterView {
               option.innerHTML = element;
               furtypeselect.appendChild(option);
             });
+                
+            furtypeselect.addEventListener("change", function(){ 
+              if(furtype.value == "Feathers"){
+                document.getElementById("flylabel").innerHTML = "Can fly: yes";
+              }
+              else{
+                document.getElementById("flylabel").innerHTML = "Can fly: no";
+              }
+            });
 
             let flylabel = document.getElementById("flylabel");
             let fly = document.getElementById("fly");
@@ -428,6 +437,16 @@ this.radio_wind.addEventListener("click", function() {
             option.setAttribute("value", `${element}`);
             option.innerHTML = element;
             furtypeselect.appendChild(option);
+          });
+          
+                          
+          furtypeselect.addEventListener("change", function(){ 
+            if(furtype.value != "Feathers"){
+              document.getElementById("swimlabel").innerHTML = "Can swim: yes";
+            }
+            else{
+              document.getElementById("swimlabel").innerHTML = "Can swim: no";
+            }
           });
 
           let flylabel = document.getElementById("flylabel");

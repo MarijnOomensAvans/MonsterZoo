@@ -25,7 +25,7 @@ export class FireMonster extends Monster{
         this.legs = [2];
         this.eyes = [1,2,3,4];
         this.furtype = ["Scales","Feathers"];
-        this.fly = "yes";
+        this.fly = "no";
         this.swim = "no";
         this.color = ["Red","Orange","Brown"];
     }
