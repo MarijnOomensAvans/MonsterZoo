@@ -46,4 +46,36 @@ export default class ZooController
     getMonsterByPosition(grid, map, x, y) {
         return this.mapservice.getMonsterByPosition(grid, map, x, y);
     }
+
+    getArms(value){
+
+    }
+
+    getTypeArms(value){
+        
+    }
+
+    getLegs(value){
+        
+    }
+
+    getEyes(value){
+        
+    }
+
+    getFurType(value){
+        
+    }
+
+    getFly(value){
+        
+    }
+
+    getSwim(value){
+        
+    }
+
+    getColor(value){
+        
+    }
 }

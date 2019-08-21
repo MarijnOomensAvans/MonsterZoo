@@ -28,15 +28,43 @@ class fireMonster extends Monster{
         this.swim = "no";
         this.color = ["Red","Orange","Brown"];
     }
-    
 }
 
-// class waterfireMonster extends Monster{
-    
-// }
-// class earthMonster extends Monster{
-    
-// }
-// class windMonster extends Monster{
-    
-// }
+class waterfireMonster extends Monster{
+    constructor(){
+        this.arms = [1,2,3,4,5,6,7,8];
+        this.typearms = [Tentacles,Fins];
+        this.legs = [1,2,3,4];
+        this.eyes = [1,2,3,4,5,6,7,8];
+        this.furtype = [Scales,Slime];
+        this.fly = "no";
+        this.swim = "yes";
+        this.color = ["Blue","Red","Green"];
+    }
+}
+
+class earthMonster extends Monster{
+    constructor(){
+        this.arms = [1,2,3,4,5,6,7,8];
+        this.typearms = [Tentacles,Fins];
+        this.legs = [1,2,3,4];
+        this.eyes = [1,2,3,4,5,6,7,8];
+        this.furtype = [Scales,Slime];
+        this.fly = "no";
+        this.swim = "yes";
+        this.color = ["Blue","Red","Green"];
+    }
+}
+
+class windMonster extends Monster{
+    constructor(){
+        this.arms = [1,2,3,4,5,6,7,8];
+        this.typearms = [Tentacles,Fins];
+        this.legs = [1,2,3,4];
+        this.eyes = [1,2,3,4,5,6,7,8];
+        this.furtype = [Scales,Slime];
+        this.fly = "no";
+        this.swim = "yes";
+        this.color = ["Blue","Red","Green"];
+    }
+}
