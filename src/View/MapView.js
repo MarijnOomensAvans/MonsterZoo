@@ -131,10 +131,37 @@ export class MapView {
                   coordid[0],
                   coordid[1]
                 );
+
+                let nowgrid = grid;
+                let map = terrain;
+                monster.addEventListener("click", function(e) {
+                  let coords = monster.getAttribute("id").split("x");
+                  console.log(nowgrid)
+                  console.log(map)
+                  console.log(coords[0])
+                  console.log(coords[1])
+                  let selectedmonster = zoocontroller.getMonsterByPosition(nowgrid, map, coords[0], coords[1]);
+  
+      
+                  alert('Monster selected: ' + selectedmonster.name + '\n' +
+                  'Element: ' + selectedmonster.element + '\n' +
+                  'Arms: ' + selectedmonster.arms + '\n' +
+                  'Type of arms: ' + selectedmonster.typearms + '\n' +
+                  'Legs: ' + selectedmonster.legs + '\n' +
+                  'Eyes: ' + selectedmonster.eyes + '\n' +
+                  'Fur type: ' + selectedmonster.furtype + '\n' +
+                  'Can fly: ' + selectedmonster.fly + '\n' +
+                  'Can swim: ' + selectedmonster.swim + '\n' +
+                  'Colour: ' + selectedmonster.colour + '\n'
+                  );
+                });
+
               } else {
                 zoocontroller.addExistingMonsterToGrid(
                   grid,
                   terrain,
+                  origin[0],
+                  origin[1],
                   coordid[0],
                   coordid[1]
                 );
@@ -151,6 +178,8 @@ export class MapView {
 
               monster.setAttribute("id", coordid[0] + "x" + coordid[1]);
               this.append(monster);
+
+
             }
           }
         });
@@ -187,6 +216,27 @@ export class MapView {
           this.img.draggable = true;
           this.img.addEventListener("dragstart", function(e) {
             e.dataTransfer.setData("Text", e.target.id);
+          });
+
+          let clicked = this.img;
+          let zoocontroller = this.zoocontroller;
+          let grid = this.grid;
+          let map = this.terrain;
+          this.img.addEventListener("click", function(e) {
+            let coords = clicked.getAttribute("id").split("x");
+            let selectedmonster = zoocontroller.getMonsterByPosition(grid, map, coords[0], coords[1]);
+
+            alert('Monster selected: ' + selectedmonster.name + '\n' +
+            'Element: ' + selectedmonster.element + '\n' +
+            'Arms: ' + selectedmonster.arms + '\n' +
+            'Type of arms: ' + selectedmonster.typearms + '\n' +
+            'Legs: ' + selectedmonster.legs + '\n' +
+            'Eyes: ' + selectedmonster.eyes + '\n' +
+            'Fur type: ' + selectedmonster.furtype + '\n' +
+            'Can fly: ' + selectedmonster.fly + '\n' +
+            'Can swim: ' + selectedmonster.swim + '\n' +
+            'Colour: ' + selectedmonster.colour + '\n'
+            );
           });
           this.td.appendChild(this.img);
         }

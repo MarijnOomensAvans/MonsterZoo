@@ -40,8 +40,8 @@ export class MapService {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(grid));
   }
 
-  getMonsterByPosition(map, x, y) {
-    
+  getMonsterByPosition(grid, map, x, y) {
+    return grid[map].grid[x].Columns[y];
   }
 
 }

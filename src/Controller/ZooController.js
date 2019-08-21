@@ -21,8 +21,8 @@ export default class ZooController
         this.mapservice.addMonsterToGrid(grid, terrain, this.getLastMonster(), x, y);
     }
 
-    addExistingMonsterToGrid(grid, terrain, x, y) {
-        this.mapservice.addMonsterToGrid(grid, terrain, this.getMonsterByPosition(grid, x, y), x, y);
+    addExistingMonsterToGrid(grid, terrain, ox, oy, x, y) {
+        this.mapservice.addMonsterToGrid(grid, terrain, this.getMonsterByPosition(grid, terrain, ox, oy), x, y);
     }
 
     deleteMonsterFromGrid(grid, terrain, x, y) {
@@ -43,7 +43,7 @@ export default class ZooController
         return this.monsterservice.getLastMonster();
     }
 
-    getMonsterByPosition(map, x, y) {
-        return this.mapservice.getMonsterByPosition(map, x, y);
+    getMonsterByPosition(grid, map, x, y) {
+        return this.mapservice.getMonsterByPosition(grid, map, x, y);
     }
 }
