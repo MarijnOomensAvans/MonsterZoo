@@ -11,11 +11,12 @@ export class CreateMonsterView {
     this.radio_wind = document.getElementById("element_wind");
     this.remove = document.getElementById("remove");
 
-    this.setElementEvents();
+    this.setElementEvents(controller);
   }
 
   updateForm(controller) {
     this.monsterform = document.getElementById("monster_form");
+
     let created = document.getElementById("created");
 
     this.monsterform.addEventListener("submit", function(e) {
@@ -72,101 +73,387 @@ export class CreateMonsterView {
     });
   }
 
-  setElementEvents() {
+  clearForm() {
+    let form = document.getElementById("monster_form");
+    while (form.hasChildNodes()) {
+      form.removeChild(form.firstChild);
+    }
+  }
+
+  setElementEvents(controller) {
     let ownclass = this;
     this.radio_fire.addEventListener("click", function() {
           if (this.checked) {
-            ownclass.generalFrom();
             let form = document.getElementById("monster_form");
-            // TODO: Remove previous form
+            ownclass.clearForm();
+            ownclass.generalFrom();
 
             let element = document.getElementById("element");
             element.setAttribute("value", "fire");
 
             let arms = document.getElementById("arms");
-            // for loop with arms
+
+            let amountarms = controller.getArms("fire");
+
+            amountarms.forEach(element => {
+              let option = document.createElement("option");
+              option.setAttribute("value", `${element}`);
+              option.innerHTML = element;
+              arms.appendChild(option);
+            });
             
-            // for(let i = 1; i < 7; i++) {
-            //   let option = document.createElement("option");
-            //   option.setAttribute("value", `${i}`);
-            //   option.innerHTML = i;
-            //   arms.appendChild(option);
-            // }
 
             let typearmsselect = document.getElementById("type_arms");
 
-            // let option1 = document.createElement("option");
-            // option1.setAttribute("value", "tentacles");
-            // option1.innerHTML = "Tentacles";
-            // let option2 = document.createElement("option");
-            // option2.setAttribute("value", "claws");
-            // option2.innerHTML = "Claws";
-            // let option3 = document.createElement("option");
-            // option3.setAttribute("value", "claw-wings");
-            // option3.innerHTML = "Claw-wings";
+            let armtypes = controller.getTypeArms("fire");
 
-            // typearmsselect.appendChild(option1);
-            // typearmsselect.appendChild(option2);
-            // typearmsselect.appendChild(option3);
+            armtypes.forEach(element => {
+              let option = document.createElement("option");
+              option.setAttribute("value", `${element}`);
+              option.innerHTML = element;
+              typearmsselect.appendChild(option);
+            });
+
+            let legslabel = document.getElementById("legslabel");
+            legslabel.innerHTML = "Legs: " + controller.getLegs("fire");
 
             let legsinput = document.getElementById("legs");
-            // legsinput.setAttribute("value", "2");
+            legsinput.setAttribute("value", controller.getLegs("fire"));
 
             let eyesselect = document.getElementById("eyes");
 
+            let eyes = controller.getEyes("fire");
 
-            // for(let i = 1; i < 5; i++) {
-            //   let option = document.createElement("option");
-            //   option.setAttribute("value", `${i}`);
-            //   option.innerHTML = i;
-            //   eyesselect.appendChild(option);
-            // }
+            eyes.forEach(element => {
+              let option = document.createElement("option");
+              option.setAttribute("value", `${element}`);
+              option.innerHTML = element;
+              eyesselect.appendChild(option);
+            });
 
             let furtypeselect = document.getElementById("furtype");
 
-            // let option11 = document.createElement("option");
-            // option11.setAttribute("value", "scales");
-            // option11.innerHTML = "Scales";
-            // let option22 = document.createElement("option");
-            // option22.setAttribute("value", "feathers");
-            // option22.innerHTML = "Feathers";
+            let furtypes = controller.getFurType("fire");
 
-            // typefurselect.appendChild(option11);
-            // typefurselect.appendChild(option22);
+            furtypes.forEach(element => {
+              let option = document.createElement("option");
+              option.setAttribute("value", `${element}`);
+              option.innerHTML = element;
+              furtypeselect.appendChild(option);
+            });
 
+            let flylabel = document.getElementById("flylabel");
             let fly = document.getElementById("fly");
 
-            // flylabel.innerHTML = "Can fly: no";
-            // let fly = document.createElement("input");
-            // fly.setAttribute("value", "false");
+            flylabel.innerHTML = "Can fly: " + controller.getFly("fire");
+            fly.setAttribute("value", controller.getFly("fire"));
 
-
+            let swimlabel = document.getElementById("swimlabel");
             let swim = document.getElementById("swim");
 
-            // swimlabel.innerHTML = "Can swim: no";
-            // let swim = document.createElement("input");
-            // swim.setAttribute("value", "false");
-
+            swimlabel.innerHTML = "Can swim: " + controller.getSwim("fire");
+            swim.setAttribute("value", controller.getSwim("fire"));
 
             let colourselect = document.getElementById("colour");
 
-            // let option111 = document.createElement("option");
-            // option111.setAttribute("value", "red");
-            // option111.innerHTML = "Red";
-            // let option222 = document.createElement("option");
-            // option222.setAttribute("value", "orange");
-            // option222.innerHTML = "Orange";
-            // let option333 = document.createElement("option");
-            // option333.setAttribute("value", "brown");
-            // option333.innerHTML = "Brown";
+            let colours = controller.getColor("fire");
 
-            // colourselect.appendChild(option111);
-            // colourselect.appendChild(option222);
-            // colourselect.appendChild(option333);
+            colours.forEach(element => {
+              let option = document.createElement("option");
+              option.setAttribute("value", `${element}`);
+              option.innerHTML = element;
+              colourselect.appendChild(option);
+            });
+            
           }
     });
 
     this.radio_fire.addEventListener("click", this.updateForm(this.controller));
+
+    this.radio_water.addEventListener("click", function() {
+      if (this.checked) {
+        let form = document.getElementById("monster_form");
+        ownclass.clearForm();
+        ownclass.generalFrom();
+
+        let element = document.getElementById("element");
+        element.setAttribute("value", "fire");
+
+        let arms = document.getElementById("arms");
+        // for loop with arms
+        
+        // for(let i = 1; i < 7; i++) {
+        //   let option = document.createElement("option");
+        //   option.setAttribute("value", `${i}`);
+        //   option.innerHTML = i;
+        //   arms.appendChild(option);
+        // }
+
+        let typearmsselect = document.getElementById("type_arms");
+
+        // let option1 = document.createElement("option");
+        // option1.setAttribute("value", "tentacles");
+        // option1.innerHTML = "Tentacles";
+        // let option2 = document.createElement("option");
+        // option2.setAttribute("value", "claws");
+        // option2.innerHTML = "Claws";
+        // let option3 = document.createElement("option");
+        // option3.setAttribute("value", "claw-wings");
+        // option3.innerHTML = "Claw-wings";
+
+        // typearmsselect.appendChild(option1);
+        // typearmsselect.appendChild(option2);
+        // typearmsselect.appendChild(option3);
+
+        let legsinput = document.getElementById("legs");
+        // legsinput.setAttribute("value", "2");
+
+        let eyesselect = document.getElementById("eyes");
+
+
+        // for(let i = 1; i < 5; i++) {
+        //   let option = document.createElement("option");
+        //   option.setAttribute("value", `${i}`);
+        //   option.innerHTML = i;
+        //   eyesselect.appendChild(option);
+        // }
+
+        let furtypeselect = document.getElementById("furtype");
+
+        // let option11 = document.createElement("option");
+        // option11.setAttribute("value", "scales");
+        // option11.innerHTML = "Scales";
+        // let option22 = document.createElement("option");
+        // option22.setAttribute("value", "feathers");
+        // option22.innerHTML = "Feathers";
+
+        // typefurselect.appendChild(option11);
+        // typefurselect.appendChild(option22);
+
+        let fly = document.getElementById("fly");
+
+        // flylabel.innerHTML = "Can fly: no";
+        // let fly = document.createElement("input");
+        // fly.setAttribute("value", "false");
+
+
+        let swim = document.getElementById("swim");
+
+        // swimlabel.innerHTML = "Can swim: no";
+        // let swim = document.createElement("input");
+        // swim.setAttribute("value", "false");
+
+
+        let colourselect = document.getElementById("colour");
+
+        // let option111 = document.createElement("option");
+        // option111.setAttribute("value", "red");
+        // option111.innerHTML = "Red";
+        // let option222 = document.createElement("option");
+        // option222.setAttribute("value", "orange");
+        // option222.innerHTML = "Orange";
+        // let option333 = document.createElement("option");
+        // option333.setAttribute("value", "brown");
+        // option333.innerHTML = "Brown";
+
+        // colourselect.appendChild(option111);
+        // colourselect.appendChild(option222);
+        // colourselect.appendChild(option333);
+      }
+});
+
+this.radio_water.addEventListener("click", this.updateForm(this.controller));
+
+
+this.radio_earth.addEventListener("click", function() {
+  if (this.checked) {
+    let form = document.getElementById("monster_form");
+    ownclass.clearForm();
+    ownclass.generalFrom();
+
+    let element = document.getElementById("element");
+    element.setAttribute("value", "fire");
+
+    let arms = document.getElementById("arms");
+    // for loop with arms
+    
+    // for(let i = 1; i < 7; i++) {
+    //   let option = document.createElement("option");
+    //   option.setAttribute("value", `${i}`);
+    //   option.innerHTML = i;
+    //   arms.appendChild(option);
+    // }
+
+    let typearmsselect = document.getElementById("type_arms");
+
+    // let option1 = document.createElement("option");
+    // option1.setAttribute("value", "tentacles");
+    // option1.innerHTML = "Tentacles";
+    // let option2 = document.createElement("option");
+    // option2.setAttribute("value", "claws");
+    // option2.innerHTML = "Claws";
+    // let option3 = document.createElement("option");
+    // option3.setAttribute("value", "claw-wings");
+    // option3.innerHTML = "Claw-wings";
+
+    // typearmsselect.appendChild(option1);
+    // typearmsselect.appendChild(option2);
+    // typearmsselect.appendChild(option3);
+
+    let legsinput = document.getElementById("legs");
+    // legsinput.setAttribute("value", "2");
+
+    let eyesselect = document.getElementById("eyes");
+
+
+    // for(let i = 1; i < 5; i++) {
+    //   let option = document.createElement("option");
+    //   option.setAttribute("value", `${i}`);
+    //   option.innerHTML = i;
+    //   eyesselect.appendChild(option);
+    // }
+
+    let furtypeselect = document.getElementById("furtype");
+
+    // let option11 = document.createElement("option");
+    // option11.setAttribute("value", "scales");
+    // option11.innerHTML = "Scales";
+    // let option22 = document.createElement("option");
+    // option22.setAttribute("value", "feathers");
+    // option22.innerHTML = "Feathers";
+
+    // typefurselect.appendChild(option11);
+    // typefurselect.appendChild(option22);
+
+    let fly = document.getElementById("fly");
+
+    // flylabel.innerHTML = "Can fly: no";
+    // let fly = document.createElement("input");
+    // fly.setAttribute("value", "false");
+
+
+    let swim = document.getElementById("swim");
+
+    // swimlabel.innerHTML = "Can swim: no";
+    // let swim = document.createElement("input");
+    // swim.setAttribute("value", "false");
+
+
+    let colourselect = document.getElementById("colour");
+
+    // let option111 = document.createElement("option");
+    // option111.setAttribute("value", "red");
+    // option111.innerHTML = "Red";
+    // let option222 = document.createElement("option");
+    // option222.setAttribute("value", "orange");
+    // option222.innerHTML = "Orange";
+    // let option333 = document.createElement("option");
+    // option333.setAttribute("value", "brown");
+    // option333.innerHTML = "Brown";
+
+    // colourselect.appendChild(option111);
+    // colourselect.appendChild(option222);
+    // colourselect.appendChild(option333);
+  }
+});
+
+this.radio_earth.addEventListener("click", this.updateForm(this.controller));
+
+
+this.radio_wind.addEventListener("click", function() {
+  if (this.checked) {
+    let form = document.getElementById("monster_form");
+    ownclass.clearForm();
+    ownclass.generalFrom();
+
+    let element = document.getElementById("element");
+    element.setAttribute("value", "fire");
+
+    let arms = document.getElementById("arms");
+    // for loop with arms
+    
+    // for(let i = 1; i < 7; i++) {
+    //   let option = document.createElement("option");
+    //   option.setAttribute("value", `${i}`);
+    //   option.innerHTML = i;
+    //   arms.appendChild(option);
+    // }
+
+    let typearmsselect = document.getElementById("type_arms");
+
+    // let option1 = document.createElement("option");
+    // option1.setAttribute("value", "tentacles");
+    // option1.innerHTML = "Tentacles";
+    // let option2 = document.createElement("option");
+    // option2.setAttribute("value", "claws");
+    // option2.innerHTML = "Claws";
+    // let option3 = document.createElement("option");
+    // option3.setAttribute("value", "claw-wings");
+    // option3.innerHTML = "Claw-wings";
+
+    // typearmsselect.appendChild(option1);
+    // typearmsselect.appendChild(option2);
+    // typearmsselect.appendChild(option3);
+
+    let legsinput = document.getElementById("legs");
+    // legsinput.setAttribute("value", "2");
+
+    let eyesselect = document.getElementById("eyes");
+
+
+    // for(let i = 1; i < 5; i++) {
+    //   let option = document.createElement("option");
+    //   option.setAttribute("value", `${i}`);
+    //   option.innerHTML = i;
+    //   eyesselect.appendChild(option);
+    // }
+
+    let furtypeselect = document.getElementById("furtype");
+
+    // let option11 = document.createElement("option");
+    // option11.setAttribute("value", "scales");
+    // option11.innerHTML = "Scales";
+    // let option22 = document.createElement("option");
+    // option22.setAttribute("value", "feathers");
+    // option22.innerHTML = "Feathers";
+
+    // typefurselect.appendChild(option11);
+    // typefurselect.appendChild(option22);
+
+    let fly = document.getElementById("fly");
+
+    // flylabel.innerHTML = "Can fly: no";
+    // let fly = document.createElement("input");
+    // fly.setAttribute("value", "false");
+
+
+    let swim = document.getElementById("swim");
+
+    // swimlabel.innerHTML = "Can swim: no";
+    // let swim = document.createElement("input");
+    // swim.setAttribute("value", "false");
+
+
+    let colourselect = document.getElementById("colour");
+
+    // let option111 = document.createElement("option");
+    // option111.setAttribute("value", "red");
+    // option111.innerHTML = "Red";
+    // let option222 = document.createElement("option");
+    // option222.setAttribute("value", "orange");
+    // option222.innerHTML = "Orange";
+    // let option333 = document.createElement("option");
+    // option333.setAttribute("value", "brown");
+    // option333.innerHTML = "Brown";
+
+    // colourselect.appendChild(option111);
+    // colourselect.appendChild(option222);
+    // colourselect.appendChild(option333);
+  }
+});
+
+this.radio_wind.addEventListener("click", this.updateForm(this.controller));
+
   }
 
   generalFrom(){
@@ -210,11 +497,6 @@ export class CreateMonsterView {
 
             let typearmsselect = document.createElement("select");
             typearmsselect.setAttribute("id", "type_arms");
-            let option1 = document.createElement("option");
-            option1.setAttribute("value", "");
-            option1.innerHTML = "";
-
-            typearmsselect.appendChild(option1);
 
             fieldset3.appendChild(typearmsselect);
 
@@ -223,12 +505,11 @@ export class CreateMonsterView {
 
             let fieldset4 = document.createElement("fieldset");
             let legslabel = document.createElement("label");
-            let number = 2;
-            legslabel.innerHTML = "Legs: " + number;
+            legslabel.setAttribute("id", "legslabel");
+            legslabel.innerHTML = "Legs: ";
 
             let legsinput = document.createElement("input");
             legsinput.setAttribute("id", "legs");
-            legsinput.setAttribute("value", number);
             legsinput.setAttribute("class", "hidden");
 
             fieldset4.appendChild(legslabel);
@@ -252,11 +533,6 @@ export class CreateMonsterView {
             furtypelabel.innerHTML = "Fur type:";
             let typefurselect = document.createElement("select");
             typefurselect.setAttribute("id", "furtype");
-            let option11 = document.createElement("option");
-            option11.setAttribute("value", "");
-            option11.innerHTML = "";
-
-            typefurselect.appendChild(option11);
 
             fieldset5.appendChild(furtypelabel);
             fieldset5.appendChild(typefurselect);
@@ -264,6 +540,7 @@ export class CreateMonsterView {
 
             let fieldset6 = document.createElement("fieldset");
             let flylabel = document.createElement("label");
+            flylabel.setAttribute("id", "flylabel")
             flylabel.innerHTML = "Can fly: ";
             let fly = document.createElement("input");
             fly.setAttribute("id", "fly");
@@ -277,6 +554,7 @@ export class CreateMonsterView {
 
             let fieldset7 = document.createElement("fieldset");
             let swimlabel = document.createElement("label");
+            swimlabel.setAttribute("id", "swimlabel")
             swimlabel.innerHTML = "Can swim: ";
             let swim = document.createElement("input");
             swim.setAttribute("id", "swim");
@@ -294,11 +572,6 @@ export class CreateMonsterView {
 
             let colourselect = document.createElement("select");
             colourselect.setAttribute("id", "colour");
-            let option111 = document.createElement("option");
-            option111.setAttribute("value", "");
-            option111.innerHTML = "";
-
-            colourselect.appendChild(option111);
 
             fieldset8.appendChild(colourselect);
 

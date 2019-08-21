@@ -136,10 +136,6 @@ export class MapView {
                 let map = terrain;
                 monster.addEventListener("click", function(e) {
                   let coords = monster.getAttribute("id").split("x");
-                  console.log(nowgrid)
-                  console.log(map)
-                  console.log(coords[0])
-                  console.log(coords[1])
                   let selectedmonster = zoocontroller.getMonsterByPosition(nowgrid, map, coords[0], coords[1]);
   
       
