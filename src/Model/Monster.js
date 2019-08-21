@@ -49,7 +49,7 @@ export class EarthMonster extends Monster{
     constructor(){
         super();
         this.arms = [2];
-        this.typearms = "Claws";
+        this.typearms = ["Claws"];
         this.legs = [2,4,6];
         this.eyes = [2];
         this.furtype = ["Hair","Scales","Slime"];
