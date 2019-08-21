@@ -55,6 +55,11 @@ export default class ZooController
         return this.mapservice.getMonsterByPosition(grid, map, x, y);
     }
 
+    interaction(grid, map) {
+        let monsters = this.monsterservice.getAllMonsters(grid, map);
+        
+    }
+
     getArms(value){
         let arms;
         switch(value) {

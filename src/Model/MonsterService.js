@@ -23,4 +23,25 @@ export class MonsterService
         return this.monsters[this.monsters.length -1];
     }
     
+    getAllMonsters(grid, map) {
+        let monsters = [];
+        let columns = [];
+        let columns3 = [];
+
+
+        let columns2 = grid[map].grid;
+
+        columns2.forEach(element => {
+            for (let i = 0; i < 10; i++) {
+                columns.push(element);
+            }
+        });
+
+        columns.forEach(element => {
+            columns3.push(element);
+        });
+
+        return monsters;
+    }
+    
 }
