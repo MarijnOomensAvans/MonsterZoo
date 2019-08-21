@@ -360,97 +360,89 @@ this.radio_earth.addEventListener("click", this.updateForm(this.controller));
 
 
 this.radio_wind.addEventListener("click", function() {
-  if (this.checked) {
-    let form = document.getElementById("monster_form");
-    ownclass.clearForm();
-    ownclass.generalFrom();
+        if (this.checked) {
+          ownclass.clearForm();
+          ownclass.generalFrom();
 
-    let element = document.getElementById("element");
-    element.setAttribute("value", "fire");
+          let element = document.getElementById("element");
+          element.setAttribute("value", "wind");
 
-    let arms = document.getElementById("arms");
-    // for loop with arms
-    
-    // for(let i = 1; i < 7; i++) {
-    //   let option = document.createElement("option");
-    //   option.setAttribute("value", `${i}`);
-    //   option.innerHTML = i;
-    //   arms.appendChild(option);
-    // }
+          let arms = document.getElementById("arms");
 
-    let typearmsselect = document.getElementById("type_arms");
+          let amountarms = controller.getArms("wind");
 
-    // let option1 = document.createElement("option");
-    // option1.setAttribute("value", "tentacles");
-    // option1.innerHTML = "Tentacles";
-    // let option2 = document.createElement("option");
-    // option2.setAttribute("value", "claws");
-    // option2.innerHTML = "Claws";
-    // let option3 = document.createElement("option");
-    // option3.setAttribute("value", "claw-wings");
-    // option3.innerHTML = "Claw-wings";
+          amountarms.forEach(element => {
+            let option = document.createElement("option");
+            option.setAttribute("value", `${element}`);
+            option.innerHTML = element;
+            arms.appendChild(option);
+          });
+          
 
-    // typearmsselect.appendChild(option1);
-    // typearmsselect.appendChild(option2);
-    // typearmsselect.appendChild(option3);
+          let typearmsselect = document.getElementById("type_arms");
 
-    let legsinput = document.getElementById("legs");
-    // legsinput.setAttribute("value", "2");
+          let armtypes = controller.getTypeArms("wind");
 
-    let eyesselect = document.getElementById("eyes");
+          armtypes.forEach(element => {
+            let option = document.createElement("option");
+            option.setAttribute("value", `${element}`);
+            option.innerHTML = element;
+            typearmsselect.appendChild(option);
+          });
 
+          let legslabel = document.getElementById("legslabel");
+          legslabel.innerHTML = "Legs: " + controller.getLegs("wind");
 
-    // for(let i = 1; i < 5; i++) {
-    //   let option = document.createElement("option");
-    //   option.setAttribute("value", `${i}`);
-    //   option.innerHTML = i;
-    //   eyesselect.appendChild(option);
-    // }
+          let legsinput = document.getElementById("legs");
+          legsinput.setAttribute("value", controller.getLegs("wind"));
 
-    let furtypeselect = document.getElementById("furtype");
+          let eyesselect = document.getElementById("eyes");
 
-    // let option11 = document.createElement("option");
-    // option11.setAttribute("value", "scales");
-    // option11.innerHTML = "Scales";
-    // let option22 = document.createElement("option");
-    // option22.setAttribute("value", "feathers");
-    // option22.innerHTML = "Feathers";
+          let eyes = controller.getEyes("wind");
 
-    // typefurselect.appendChild(option11);
-    // typefurselect.appendChild(option22);
+          eyes.forEach(element => {
+            let option = document.createElement("option");
+            option.setAttribute("value", `${element}`);
+            option.innerHTML = element;
+            eyesselect.appendChild(option);
+          });
 
-    let fly = document.getElementById("fly");
+          let furtypeselect = document.getElementById("furtype");
 
-    // flylabel.innerHTML = "Can fly: no";
-    // let fly = document.createElement("input");
-    // fly.setAttribute("value", "false");
+          let furtypes = controller.getFurType("wind");
 
+          furtypes.forEach(element => {
+            let option = document.createElement("option");
+            option.setAttribute("value", `${element}`);
+            option.innerHTML = element;
+            furtypeselect.appendChild(option);
+          });
 
-    let swim = document.getElementById("swim");
+          let flylabel = document.getElementById("flylabel");
+          let fly = document.getElementById("fly");
 
-    // swimlabel.innerHTML = "Can swim: no";
-    // let swim = document.createElement("input");
-    // swim.setAttribute("value", "false");
+          flylabel.innerHTML = "Can fly: " + controller.getFly("wind");
+          fly.setAttribute("value", controller.getFly("wind"));
 
+          let swimlabel = document.getElementById("swimlabel");
+          let swim = document.getElementById("swim");
 
-    let colourselect = document.getElementById("colour");
+          swimlabel.innerHTML = "Can swim: " + controller.getSwim("wind");
+          swim.setAttribute("value", controller.getSwim("wind"));
 
-    // let option111 = document.createElement("option");
-    // option111.setAttribute("value", "red");
-    // option111.innerHTML = "Red";
-    // let option222 = document.createElement("option");
-    // option222.setAttribute("value", "orange");
-    // option222.innerHTML = "Orange";
-    // let option333 = document.createElement("option");
-    // option333.setAttribute("value", "brown");
-    // option333.innerHTML = "Brown";
+          let colourselect = document.getElementById("colour");
 
-    // colourselect.appendChild(option111);
-    // colourselect.appendChild(option222);
-    // colourselect.appendChild(option333);
-  }
-});
+          let colours = controller.getColor("wind");
 
+          colours.forEach(element => {
+            let option = document.createElement("option");
+            option.setAttribute("value", `${element}`);
+            option.innerHTML = element;
+            colourselect.appendChild(option);
+          });
+          
+        }
+  });
 this.radio_wind.addEventListener("click", this.updateForm(this.controller));
 
   }
