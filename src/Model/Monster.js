@@ -20,23 +20,23 @@ export class Monster{
 class fireMonster extends Monster{
     constructor(){
         this.arms = [1,2,3,4,5,6];
-        this.typearms = [Tentacles,Claws,Claw-wings];
+        this.typearms = ["Tentacles","Claws","Claw-wings"];
         this.legs = 2;
         this.eyes = [1,2,3,4];
-        this.furtype = [Scales,Feathers];
+        this.furtype = ["Scales","Feathers"];
         this.fly = "yes";
         this.swim = "no";
         this.color = ["Red","Orange","Brown"];
     }
 }
 
-class waterfireMonster extends Monster{
+class waterMonster extends Monster{
     constructor(){
         this.arms = [1,2,3,4,5,6,7,8];
-        this.typearms = [Tentacles,Fins];
+        this.typearms = ["Tentacles","Fins"];
         this.legs = [1,2,3,4];
         this.eyes = [1,2,3,4,5,6,7,8];
-        this.furtype = [Scales,Slime];
+        this.furtype = ["Scales","Slime"];
         this.fly = "no";
         this.swim = "yes";
         this.color = ["Blue","Red","Green"];
@@ -45,26 +45,26 @@ class waterfireMonster extends Monster{
 
 class earthMonster extends Monster{
     constructor(){
-        this.arms = [1,2,3,4,5,6,7,8];
-        this.typearms = [Tentacles,Fins];
-        this.legs = [1,2,3,4];
-        this.eyes = [1,2,3,4,5,6,7,8];
-        this.furtype = [Scales,Slime];
+        this.arms = 2;
+        this.typearms = "Claws";
+        this.legs = [2,4,6];
+        this.eyes = 2;
+        this.furtype = [Hair,Scales,Slime];
         this.fly = "no";
-        this.swim = "yes";
-        this.color = ["Blue","Red","Green"];
+        this.swim = "no";
+        this.color = ["Purple","Orange","White"];
     }
 }
 
 class windMonster extends Monster{
     constructor(){
-        this.arms = [1,2,3,4,5,6,7,8];
-        this.typearms = [Tentacles,Fins];
-        this.legs = [1,2,3,4];
-        this.eyes = [1,2,3,4,5,6,7,8];
-        this.furtype = [Scales,Slime];
-        this.fly = "no";
-        this.swim = "yes";
-        this.color = ["Blue","Red","Green"];
+        this.arms = 2;
+        this.typearms = ["Wings","Claw-wings"];
+        this.legs = [0,2];
+        this.eyes = 2;
+        this.furtype = [Feathers,Hair,Scales];
+        this.fly = "yes";
+        this.swim = "no";
+        this.color = ["White","Blue","Purple"];
     }
 }
