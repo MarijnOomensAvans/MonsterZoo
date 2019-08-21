@@ -58,16 +58,16 @@ export default class ZooController
     getArms(value){
         let arms;
         switch(value) {
-            case fire:
+            case "fire":
                 arms = this.fireMonster.arms;
                 break;
-            case water:
+            case "water":
                 arms = this.waterMonster.arms;
                 break;
-            case wind:
+            case "wind":
                 arms = this.windMonster.arms;
                 break;
-            case earth:
+            case "earth":
                 arms = this.earthMonster.arms
                 break;
             default:
@@ -79,16 +79,16 @@ export default class ZooController
     getTypeArms(value){
         let typeArms;
         switch(value) {
-            case fire:
+            case "fire":
                 typeArms = this.fireMonster.typearms;
                 break;
-            case water:
+            case "water":
                 typeArms = this.waterMonster.typearms;
                 break;
-            case wind:
+            case "wind":
                 typeArms = this.windMonster.typearms;
                 break;
-            case earth:
+            case "earth":
                 typeArms = this.earthMonster.typearms;
                 break;
             default:
@@ -100,16 +100,16 @@ export default class ZooController
     getLegs(value){
         let legs;
         switch(value) {
-            case fire:
+            case "fire":
                 legs = this.fireMonster.legs;
                 break;
-            case water:
+            case "water":
                 legs = this.waterMonster.legs;
                 break;
-            case wind:
+            case "wind":
                 legs = this.windMonster.legs;
                 break;
-            case earth:
+            case "earth":
                 legs = this.earthMonster.legs;
                 break;
             default:
@@ -121,16 +121,16 @@ export default class ZooController
     getEyes(value){
         let eyes;
         switch(value) {
-            case fire:
+            case "fire":
                 eyes = this.fireMonster.eyes;
                 break;
-            case water:
+            case "water":
                 eyes = this.waterMonster.eyes;
                 break;
-            case wind:
+            case "wind":
                 eyes = this.windMonster.eyes;
                 break;
-            case earth:
+            case "earth":
                 eyes = this.earthMonster.eyes;
                 break;
             default:
@@ -142,16 +142,16 @@ export default class ZooController
     getFurType(value){
         let furType;
         switch(value) {
-            case fire:
+            case "fire":
                 furType = this.fireMonster.furtype;
                 break;
-            case water:
+            case "water":
                 furType = this.waterMonster.furtype;
                 break;
-            case wind:
+            case "wind":
                 furType = this.windMonster.furtype;
                 break;
-            case earth:
+            case "earth":
                 furType = this.earthMonster.furtype;
                 break;
             default:
@@ -163,17 +163,17 @@ export default class ZooController
     getFly(value){
         let fly;
         switch(value) {
-            case fire:
-
+            case "fire":
+                fly = this.fireMonster.fly;
                 break;
-            case water:
-
+            case "water":
+                fly = this.waterMonster.fly;
                 break;
-            case wind:
-
+            case "wind":
+                fly = this.windMonster.fly;
                 break;
-            case earth:
-
+            case "earth":
+                fly = this.earthMonster.fly;
                 break;
             default:
                 fly = 0;
@@ -184,17 +184,17 @@ export default class ZooController
     getSwim(value){
         let swim;
         switch(value) {
-            case fire:
-
+            case "fire":
+                swim = this.fireMonster.swim;
                 break;
-            case water:
-
+            case "water":
+                swim = this.waterMonster.swim;
                 break;
-            case wind:
-
+            case "wind":
+                swim = this.windMonster.swim;
                 break;
-            case earth:
-
+            case "earth":
+                swim = this.earthMonster.swim;
                 break;
             default:
                 swim = 0;
@@ -205,17 +205,17 @@ export default class ZooController
     getColor(value){
         let color;
         switch(value) {
-            case fire:
-
+            case "fire":
+                color = this.fireMonster.color;
                 break;
-            case water:
-
+            case "water":
+                color = this.waterMonster.color;
                 break;
-            case wind:
-
+            case "wind":
+                color = this.windMonster.color;
                 break;
-            case earth:
-
+            case "earth":
+                color = this.earthMonster.color;
                 break;
             default:
                 color = 0;
