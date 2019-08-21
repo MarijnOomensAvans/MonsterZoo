@@ -114,10 +114,17 @@ export class CreateMonsterView {
             });
 
             let legslabel = document.getElementById("legslabel");
-            legslabel.innerHTML = "Legs: " + controller.getLegs("fire");
+            legslabel.innerHTML = "Legs: ";
 
-            let legsinput = document.getElementById("legs");
-            legsinput.setAttribute("value", controller.getLegs("fire"));
+            let legsselect = document.getElementById("legs");
+            let legsoptions = controller.getLegs("fire");
+
+            legsoptions.forEach(element => {
+              let option = document.createElement("option");
+              option.setAttribute("value", `${element}`);
+              option.innerHTML = element;
+              legsselect.appendChild(option);
+            });
 
             let eyesselect = document.getElementById("eyes");
 
@@ -201,10 +208,17 @@ export class CreateMonsterView {
         });
 
         let legslabel = document.getElementById("legslabel");
-        legslabel.innerHTML = "Legs: " + controller.getLegs("water");
+        legslabel.innerHTML = "Legs: ";
 
-        let legsinput = document.getElementById("legs");
-        legsinput.setAttribute("value", controller.getLegs("water"));
+        let legsselect = document.getElementById("legs");
+        let legsoptions = controller.getLegs("water");
+
+        legsoptions.forEach(element => {
+          let option = document.createElement("option");
+          option.setAttribute("value", `${element}`);
+          option.innerHTML = element;
+          legsselect.appendChild(option);
+        });
 
         let eyesselect = document.getElementById("eyes");
 
@@ -288,10 +302,17 @@ this.radio_earth.addEventListener("click", function() {
     });
 
     let legslabel = document.getElementById("legslabel");
-    legslabel.innerHTML = "Legs: " + controller.getLegs("earth");
+    legslabel.innerHTML = "Legs: ";
 
-    let legsinput = document.getElementById("legs");
-    legsinput.setAttribute("value", controller.getLegs("earth"));
+    let legsselect = document.getElementById("legs");
+    let legsoptions = controller.getLegs("earth");
+
+    legsoptions.forEach(element => {
+      let option = document.createElement("option");
+      option.setAttribute("value", `${element}`);
+      option.innerHTML = element;
+      legsselect.appendChild(option);
+    });
 
     let eyesselect = document.getElementById("eyes");
 
@@ -343,7 +364,6 @@ this.radio_earth.addEventListener("click", function() {
 
 this.radio_earth.addEventListener("click", this.updateForm(this.controller));
 
-
 this.radio_wind.addEventListener("click", function() {
         if (this.checked) {
           ownclass.clearForm();
@@ -376,10 +396,17 @@ this.radio_wind.addEventListener("click", function() {
           });
 
           let legslabel = document.getElementById("legslabel");
-          legslabel.innerHTML = "Legs: " + controller.getLegs("wind");
+          legslabel.innerHTML = "Legs: ";
 
-          let legsinput = document.getElementById("legs");
-          legsinput.setAttribute("value", controller.getLegs("wind"));
+          let legsselect = document.getElementById("legs");
+          let legsoptions = controller.getLegs("wind");
+
+          legsoptions.forEach(element => {
+            let option = document.createElement("option");
+            option.setAttribute("value", `${element}`);
+            option.innerHTML = element;
+            legsselect.appendChild(option);
+          });
 
           let eyesselect = document.getElementById("eyes");
 
@@ -484,12 +511,11 @@ this.radio_wind.addEventListener("click", this.updateForm(this.controller));
             legslabel.setAttribute("id", "legslabel");
             legslabel.innerHTML = "Legs: ";
 
-            let legsinput = document.createElement("input");
-            legsinput.setAttribute("id", "legs");
-            legsinput.setAttribute("class", "hidden");
+            let legsselect = document.createElement("select");
+            legsselect.setAttribute("id", "legs");
 
             fieldset4.appendChild(legslabel);
-            fieldset4.appendChild(legsinput);
+            fieldset4.appendChild(legsselect);
             form.appendChild(fieldset4);
 
             let fieldset9 = document.createElement("fieldset");
@@ -554,17 +580,11 @@ this.radio_wind.addEventListener("click", this.updateForm(this.controller));
             form.appendChild(colourlabel);
             form.appendChild(fieldset8);
 
-            let resetbutton = document.createElement("input");
-            resetbutton.setAttribute("type", "reset");
-            resetbutton.setAttribute("class", "nes-btn is-error");
-            resetbutton.setAttribute("value", "Cancel");
-
             let submit = document.createElement("input");
             submit.setAttribute("type", "submit");
             submit.setAttribute("class", "nes-btn is-success");
             submit.setAttribute("value", "Submit");
 
-            form.appendChild(resetbutton);
             form.appendChild(submit);
             this.updateForm(this.controller);
           }
