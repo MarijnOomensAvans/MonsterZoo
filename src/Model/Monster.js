@@ -17,9 +17,20 @@ export class Monster{
     }
 }
 
-// class fireMonster extends Monster{
+class fireMonster extends Monster{
+    constructor(){
+        this.arms = [1,2,3,4,5,6];
+        this.typearms = [Tentacles,Claws,Claw-wings];
+        this.legs = 2;
+        this.eyes = [1,2,3,4];
+        this.furtype = [Scales,Feathers];
+        this.fly = "yes";
+        this.swim = "no";
+        this.color = ["Red","Orange","Brown"];
+    }
+    
+}
 
-// }
 // class waterfireMonster extends Monster{
     
 // }

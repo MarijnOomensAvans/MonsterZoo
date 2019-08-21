@@ -11,8 +11,10 @@ export class CreateMonsterView {
     this.radio_wind = document.getElementById("element_wind");
     this.remove = document.getElementById("remove");
 
-    this.setElementEvents();
+    //this.setElementEvents();
     // this.setEvents();
+
+    this.generalFrom();
   }
 
   updateForm(controller) {
@@ -31,8 +33,6 @@ export class CreateMonsterView {
       this.img.setAttribute("class", "created");
 
       let src = "";
-
-      console.log(this.element.value)
 
       switch (this.element.value) {
         case "fire":
@@ -259,6 +259,173 @@ export class CreateMonsterView {
 
     this.radio_fire.addEventListener("click", this.updateForm(this.controller));
   }
+
+  generalFrom(){
+    let form = document.getElementById("monster_form");
+            // TODO: Remove previous form
+
+            let fieldset = document.createElement("fieldset");
+            let namelabel = document.createElement("label");
+            namelabel.innerHTML = "Name:";
+            let nameinput = document.createElement("input");
+            nameinput.setAttribute("id", "name");
+            nameinput.setAttribute("name", "name");
+
+            fieldset.appendChild(namelabel);
+            fieldset.appendChild(nameinput);
+
+            form.appendChild(fieldset);
+
+            let element = document.createElement("input");
+            element.setAttribute("id", "element");
+            element.setAttribute("value", "");
+            element.hidden = true;
+
+            form.appendChild(element);
+
+            let fieldset2 = document.createElement("fieldset");
+            let armslabel = document.createElement("label");
+            armslabel.innerHTML = "Arms:";
+            let select = document.createElement("select");
+            select.setAttribute("id", "arms");
+            let start = 1;
+            let end = 6;
+            for(let i = start; i <= end; i++) {
+              let option = document.createElement("option");
+              option.setAttribute("value", `${i}`);
+              option.innerHTML = i;
+              select.appendChild(option);
+            }
+
+            fieldset2.appendChild(armslabel);
+            fieldset2.appendChild(select);
+
+            form.appendChild(fieldset2);
+
+            let fieldset3 = document.createElement("fieldset");
+            let typearmslabel = document.createElement("label");
+            typearmslabel.innerHTML = "Type arms:"
+
+            let typearmsselect = document.createElement("select");
+            typearmsselect.setAttribute("id", "type_arms");
+            let option1 = document.createElement("option");
+            option1.setAttribute("value", "");
+            option1.innerHTML = "";
+
+            typearmsselect.appendChild(option1);
+
+            fieldset3.appendChild(typearmsselect);
+
+            form.appendChild(typearmslabel);
+            form.appendChild(fieldset3);
+
+            let fieldset4 = document.createElement("fieldset");
+            let legslabel = document.createElement("label");
+            let number = 2;
+            legslabel.innerHTML = "Legs: " + number;
+
+            let legsinput = document.createElement("input");
+            legsinput.setAttribute("id", "legs");
+            legsinput.setAttribute("value", number);
+            legsinput.setAttribute("class", "hidden");
+
+            fieldset4.appendChild(legslabel);
+            fieldset4.appendChild(legsinput);
+            form.appendChild(fieldset4);
+
+            let fieldset9 = document.createElement("fieldset");
+            let eyeslabel = document.createElement("label");
+            eyeslabel.innerHTML = "Eyes:";
+            let select2 = document.createElement("select");
+            select2.setAttribute("id", "eyes");
+            let start_eye = 1;
+            let end_eye = 5;
+            for(let i = start_eye; i < end_eye; i++) {
+              let option = document.createElement("option");
+              option.setAttribute("value", `${i}`);
+              option.innerHTML = i;
+              select2.appendChild(option);
+            }
+
+            fieldset9.appendChild(eyeslabel);
+            fieldset9.appendChild(select2);
+
+            form.append(fieldset9);
+
+            let fieldset5 = document.createElement("fieldset");
+            let furtypelabel = document.createElement("label");
+            furtypelabel.innerHTML = "Fur type:";
+            let typefurselect = document.createElement("select");
+            typefurselect.setAttribute("id", "furtype");
+            let option11 = document.createElement("option");
+            option11.setAttribute("value", "");
+            option11.innerHTML = "";
+
+            typefurselect.appendChild(option11);
+
+            fieldset5.appendChild(furtypelabel);
+            fieldset5.appendChild(typefurselect);
+            form.appendChild(fieldset5);
+
+            let fieldset6 = document.createElement("fieldset");
+            let flylabel = document.createElement("label");
+            flylabel.innerHTML = "Can fly: ";
+            let fly = document.createElement("input");
+            fly.setAttribute("id", "fly");
+            fly.setAttribute("value", "");
+            fly.setAttribute("class", "hidden");
+
+            fieldset6.appendChild(flylabel);
+            fieldset6.appendChild(fly);
+
+            form.appendChild(fieldset6);
+
+            let fieldset7 = document.createElement("fieldset");
+            let swimlabel = document.createElement("label");
+            swimlabel.innerHTML = "Can swim: ";
+            let swim = document.createElement("input");
+            swim.setAttribute("id", "swim");
+            swim.setAttribute("value", "");
+            swim.setAttribute("class", "hidden");
+
+            fieldset6.appendChild(swimlabel);
+            fieldset6.appendChild(swim);
+
+            form.appendChild(fieldset7);
+
+            let fieldset8 = document.createElement("fieldset");
+            let colourlabel = document.createElement("label");
+            colourlabel.innerHTML = "Colour:"
+
+            let colourselect = document.createElement("select");
+            colourselect.setAttribute("id", "colour");
+            let option111 = document.createElement("option");
+            option111.setAttribute("value", "");
+            option111.innerHTML = "";
+
+            colourselect.appendChild(option111);
+
+            fieldset8.appendChild(colourselect);
+
+            form.appendChild(colourlabel);
+            form.appendChild(fieldset8);
+
+            let resetbutton = document.createElement("input");
+            resetbutton.setAttribute("type", "reset");
+            resetbutton.setAttribute("class", "nes-btn is-error");
+            resetbutton.setAttribute("value", "Cancel");
+
+            let submit = document.createElement("input");
+            submit.setAttribute("type", "submit");
+            submit.setAttribute("class", "nes-btn is-success");
+            submit.setAttribute("value", "Submit");
+
+            form.appendChild(resetbutton);
+            form.appendChild(submit);
+            this.updateForm(this.controller);
+          }
+      
+ 
 
   // setEvents() {
   //   //events
