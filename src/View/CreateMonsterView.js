@@ -84,7 +84,6 @@ export class CreateMonsterView {
     let ownclass = this;
     this.radio_fire.addEventListener("click", function() {
           if (this.checked) {
-            let form = document.getElementById("monster_form");
             ownclass.clearForm();
             ownclass.generalFrom();
 
