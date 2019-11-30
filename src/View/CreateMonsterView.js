@@ -19,7 +19,7 @@ export class CreateMonsterView {
 
     let created = document.getElementById("created");
 
-    this.monsterform.addEventListener("submit", (e) => {
+    this.monsterform.addEventListener("submit", function(e) {
       e.preventDefault();
 
       if (created.hasChildNodes()) {
@@ -82,7 +82,7 @@ export class CreateMonsterView {
 
   setElementEvents(controller) {
     let ownclass = this;
-    this.radio_fire.addEventListener("click", () => {
+    this.radio_fire.addEventListener("click", function() {
           if (this.checked) {
             ownclass.clearForm();
             ownclass.generalFrom();
@@ -185,7 +185,7 @@ export class CreateMonsterView {
 
     this.radio_fire.addEventListener("click", this.updateForm(this.controller));
 
-    this.radio_water.addEventListener("click", () => {
+    this.radio_water.addEventListener("click", function() {
       if (this.checked) {
         ownclass.clearForm();
         ownclass.generalFrom();
@@ -280,7 +280,7 @@ export class CreateMonsterView {
 this.radio_water.addEventListener("click", this.updateForm(this.controller));
 
 
-this.radio_earth.addEventListener("click", () => {
+this.radio_earth.addEventListener("click", function() {
   if (this.checked) {
     ownclass.clearForm();
     ownclass.generalFrom();
@@ -373,7 +373,7 @@ this.radio_earth.addEventListener("click", () => {
 
 this.radio_earth.addEventListener("click", this.updateForm(this.controller));
 
-this.radio_wind.addEventListener("click", () => {
+this.radio_wind.addEventListener("click", function() {
         if (this.checked) {
           ownclass.clearForm();
           ownclass.generalFrom();

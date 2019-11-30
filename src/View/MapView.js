@@ -112,7 +112,7 @@ export class MapView {
         let terrain = this.terrain;
         let zoocontroller = this.zoocontroller;
 
-        this.td.addEventListener("drop", (e) => {
+        this.td.addEventListener("drop", function(e) {
           let data = e.dataTransfer.getData("Text");
           let monster = document.getElementById(data);
 
