@@ -1,0 +1,121 @@
+* {
+    font-size: 100%;
+    font-family: 'Press Start 2P', cursive;
+   }
+
+body {
+    margin: 0;
+}
+
+ .holy-grail {
+	min-height: 100vh;
+}
+
+.holy-grail header {
+    height: 6rem;
+}
+
+.holy-grail,
+.holy-grail-body {
+	display: flex;
+	flex: 1 1 auto;
+    flex-direction: column;
+    text-align: center;
+}
+
+.holy-grail-content {
+    flex: 1 1 auto;
+    background-color: #a8a8a8;
+}
+
+.holy-grail-sidebar-1 {
+    order: -1;
+}
+
+#map {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #289150;
+}
+
+#grid {
+    border-collapse: collapse;
+    width: 80%;
+    height: 90%;
+}
+
+#grid td {
+    border: 3px solid black;
+    width: 80px;
+    height: 80px
+}
+
+#grid img{
+    max-width: 70px;
+    max-height: 70px;
+}
+
+#rain{
+    position: absolute;
+    height: 860px;
+    width: 1040px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.created {
+    width: 120px;
+    height: 120px;
+}
+
+#remove {
+    width: 200px;
+    height: 200px;
+}
+
+@media (min-width: 768px) {
+	.holy-grail-body {
+		flex-direction: row;
+	}
+
+	.hg-sidebar {
+		flex: 0 0 20%;
+	}
+}
+
+.map {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map canvas {
+    /* width: 800px;
+    height: 800px; */
+    background-color: darkolivegreen;
+    border: 5px solid black;
+}
+
+/* Overwrite external style (NES-css) */
+.nes-btn.is-success {
+    color: #212529;
+}
+
+.nes-btn.is-error {
+    color: #212529;
+}
+
+.hidden {
+    display: none;
+}
+
+.visibility {
+    visibility: visible;
+}
+
+.align-left{
+    text-align: left;
+}

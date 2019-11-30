@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MonsterZoo</title>
+    <meta name="description" content="An interactive monster farm made with HTML5, CSS3 and ES6">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <script src="bundle.js" defer></script>
+</head>
+
+<body class="holy-grail">
+    <header class="nes-container is-rounded is-dark">
+        <button type="button" id="jungle" class="nes-btn is-success">Jungle</button>
+        <button type="button" id="desert" class="nes-btn is-warning">Desert</button>
+        <button type="button" id="northpole" class="nes-btn">Northpole</button>
+    </header>
+
+    <div class="holy-grail-body">
+
+        <section class="holy-grail-content">
+            <div id="map">
+            </div>
+        </section>
+
+        <div class="holy-grail-sidebar-1 hg-sidebar is-dark nes-container with-title is-centered">
+            <p class="title">Create monster</p>
+            <label>Element:</label><br>
+            <input id="element_fire" name="element" type="radio" value="1"><label>Fire</label>
+            <input id="element_water" name="element" type="radio" value="2"><label>Water</label><br>
+            <input id="element_earth" name="element" type="radio" value="3"><label>Earth</label>
+            <input id="element_wind" name="element" type="radio" value="4"><label>Wind</label>
+
+            <!-- Forms for different elements -->
+            <div id="form">
+                <form id="monster_form" class="align-left">
+                </form>
+                <div class="nes-container is-dark with-title">
+                    <p class="title">Created</p>
+                    <div id="created"></div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="holy-grail-sidebar-2 hg-sidebar is-dark nes-container with-title is-centered">
+            <p class="title">Information</p>
+            <img id="weatherimg" src="../src/Resources/sun.png" width="100" height="100">
+            <p id="temp"></p>
+            <div class="nes-container is-rounded is-dark with-title is-centered">
+                <p class="title">Weather reaction</p>
+                <table style="width:100%">
+                    <tr>
+                        <th></th>
+                        <th>Raining</th>
+                        <th>+30°</th>
+                        <th>-30°</th>
+                    </tr>
+                    <tr>
+                        <td>Fire</td>
+                        <td class="nes-text is-error">-10%</td>
+                        <td class="nes-text is-success">+10%</td>
+                        <td>0%</td>
+                    </tr>
+                    <tr>
+                        <td>Water</td>
+                        <td class="nes-text is-success">+10%</td>
+                        <td class="nes-text is-error">-10%</td>
+                        <td>0%</td>
+                    </tr>
+                    <tr>
+                        <td>Wind</td>
+                        <td class="nes-text is-error">-10%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                    </tr>
+                    <tr>
+                        <td>Earth</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="nes-container is-dark with-title">
+                <p class="title">Remove</p>
+                <img id="remove" src="..\src\Resources\bin.png">
+            </div>
+            <div>
+                <button type="button" id="rainswitch" class="nes-btn">Rainswitch</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
