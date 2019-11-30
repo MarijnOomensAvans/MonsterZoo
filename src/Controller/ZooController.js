@@ -42,7 +42,7 @@ export default class ZooController
     }
 
     loadGrid(mapview) {
-        this.mapservice.loadGrid().then(function(grid) {
+        this.mapservice.loadGrid().then((grid) => {
             mapview.paintGrid(grid);
         });
     }

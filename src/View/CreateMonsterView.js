@@ -19,7 +19,7 @@ export class CreateMonsterView {
 
     let created = document.getElementById("created");
 
-    this.monsterform.addEventListener("submit", function(e) {
+    this.monsterform.addEventListener("submit", (e) => {
       e.preventDefault();
 
       if (created.hasChildNodes()) {
@@ -52,7 +52,7 @@ export class CreateMonsterView {
       this.img.src = src;
       this.img.draggable = true;
       this.img.setAttribute('id', '-1x-1');
-      this.img.addEventListener("dragstart", function(e) {
+      this.img.addEventListener("dragstart", (e) => {
         e.dataTransfer.setData("Text", e.target.id);
       });
       created.appendChild(this.img);
@@ -82,7 +82,7 @@ export class CreateMonsterView {
 
   setElementEvents(controller) {
     let ownclass = this;
-    this.radio_fire.addEventListener("click", function() {
+    this.radio_fire.addEventListener("click", () => {
           if (this.checked) {
             ownclass.clearForm();
             ownclass.generalFrom();
@@ -148,7 +148,7 @@ export class CreateMonsterView {
               furtypeselect.appendChild(option);
             });
                 
-            furtypeselect.addEventListener("change", function(){ 
+            furtypeselect.addEventListener("change", () =>{ 
               if(furtype.value == "Feathers"){
                 document.getElementById("flylabel").innerHTML = "Can fly: yes";
               }
@@ -185,7 +185,7 @@ export class CreateMonsterView {
 
     this.radio_fire.addEventListener("click", this.updateForm(this.controller));
 
-    this.radio_water.addEventListener("click", function() {
+    this.radio_water.addEventListener("click", () => {
       if (this.checked) {
         ownclass.clearForm();
         ownclass.generalFrom();
@@ -280,7 +280,7 @@ export class CreateMonsterView {
 this.radio_water.addEventListener("click", this.updateForm(this.controller));
 
 
-this.radio_earth.addEventListener("click", function() {
+this.radio_earth.addEventListener("click", () => {
   if (this.checked) {
     ownclass.clearForm();
     ownclass.generalFrom();
@@ -373,7 +373,7 @@ this.radio_earth.addEventListener("click", function() {
 
 this.radio_earth.addEventListener("click", this.updateForm(this.controller));
 
-this.radio_wind.addEventListener("click", function() {
+this.radio_wind.addEventListener("click", () => {
         if (this.checked) {
           ownclass.clearForm();
           ownclass.generalFrom();
@@ -440,7 +440,7 @@ this.radio_wind.addEventListener("click", function() {
           });
           
                           
-          furtypeselect.addEventListener("change", function(){ 
+          furtypeselect.addEventListener("change", () => { 
             if(furtype.value != "Feathers"){
               document.getElementById("swimlabel").innerHTML = "Can swim: yes";
             }

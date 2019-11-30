@@ -1,12 +1,8 @@
 import { Monster } from './Monster';
-
-
 export class MonsterService
 {
     constructor(){
-        this.monsters = [
-            new Monster("fire", "Marijn", 2, "tentacles", 2, 4, "scales", false, false, "orange", 0, 1, 1)
-        ]
+        this.monsters = []
     }
 
     getMonsters()

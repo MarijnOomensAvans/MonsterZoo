@@ -11,7 +11,7 @@ export class WeatherView {
     initRainSwitch() {
         let rainswitch = document.getElementById('rainswitch');
         let ownclass = this;
-        rainswitch.addEventListener("click", function(e) {
+        rainswitch.addEventListener("click", (e) => {
             e.preventDefault();
             if(ownclass.rain) {
                 ownclass.updateWeather(ownclass.temperature, "Clear");
@@ -43,6 +43,8 @@ export class WeatherView {
         }
     }
 
+    // Function for initiating rain canvas
+
     startRain(maxParts) {
         let canvas = document.getElementById("rain");
 
@@ -71,7 +73,7 @@ export class WeatherView {
                 particles[b] = init[b];
             }
 
-            function draw() {
+            let draw = () => {
                 ctx.clearRect(0, 0, w, h);
                 for (let c = 0; c < particles.length; c++) {
                     let p = particles[c];
@@ -83,7 +85,7 @@ export class WeatherView {
                 move();
             }
 
-            function move() {
+            let move = () => {
                 for (let b = 0; b < particles.length; b++) {
                     let p = particles[b];
                     p.x += p.xs;

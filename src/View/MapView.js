@@ -100,11 +100,11 @@ export class MapView {
         this.td = document.createElement("td");
 
         // Drag and drop events
-        this.td.addEventListener("dragover", function(e) {
+        this.td.addEventListener("dragover", (e) => {
           e.preventDefault();
         });
 
-        this.td.addEventListener("dragenter", function(e) {
+        this.td.addEventListener("dragenter", (e) => {
           e.preventDefault();
         });
 
@@ -112,7 +112,7 @@ export class MapView {
         let terrain = this.terrain;
         let zoocontroller = this.zoocontroller;
 
-        this.td.addEventListener("drop", function(e) {
+        this.td.addEventListener("drop", (e) => {
           let data = e.dataTransfer.getData("Text");
           let monster = document.getElementById(data);
 
@@ -134,7 +134,7 @@ export class MapView {
 
                 let nowgrid = grid;
                 let map = terrain;
-                monster.addEventListener("click", function(e) {
+                monster.addEventListener("click", (e) => {
                   let coords = monster.getAttribute("id").split("x");
                   let selectedmonster = zoocontroller.getMonsterByPosition(nowgrid, map, coords[0], coords[1]);
   
@@ -174,8 +174,6 @@ export class MapView {
 
               monster.setAttribute("id", coordid[0] + "x" + coordid[1]);
               this.append(monster);
-
-
             }
           }
         });
@@ -210,7 +208,7 @@ export class MapView {
           }
 
           this.img.draggable = true;
-          this.img.addEventListener("dragstart", function(e) {
+          this.img.addEventListener("dragstart", (e) => {
             e.dataTransfer.setData("Text", e.target.id);
           });
 
@@ -218,7 +216,7 @@ export class MapView {
           let zoocontroller = this.zoocontroller;
           let grid = this.grid;
           let map = this.terrain;
-          this.img.addEventListener("click", function(e) {
+          this.img.addEventListener("click", (e) => {
             let coords = clicked.getAttribute("id").split("x");
             let selectedmonster = zoocontroller.getMonsterByPosition(grid, map, coords[0], coords[1]);
 
@@ -280,7 +278,7 @@ export class MapView {
     let terrain = this.terrain;
     let zoocontroller = this.zoocontroller;
 
-    this.remove.addEventListener("drop", function(e) {
+    this.remove.addEventListener("drop", (e) => {
       let data = e.dataTransfer.getData("Text");
       let monster = document.getElementById(data);
       if (monster != null) {
@@ -297,11 +295,11 @@ export class MapView {
       }
     });
 
-    this.remove.addEventListener("dragover", function(e) {
+    this.remove.addEventListener("dragover", (e) => {
       e.preventDefault();
     });
 
-    this.remove.addEventListener("dragenter", function(e) {
+    this.remove.addEventListener("dragenter", (e) => {
       e.preventDefault();
     });
   }
